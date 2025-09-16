@@ -1,0 +1,348 @@
+<div class="p-3">
+	<div class="card">
+		<div class="card-header">
+			<div class="card_tittle">
+				<div class='row'>
+					<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Datos Financieros</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-body ">
+			<div class="row alert alert-info">
+				<div class="col-md-12">
+					<p class="text-justify">La persona que quede registrada como deudor es la responsable de los pagos en el colegio, a su nombre se expedirá la constancia para efectos de declaración de renta y no podrá ser modificada durante el año.</p>
+					<p class="text-justify"><strong>Nota:</strong>Tenga en cuenta que, según las nuevas disposiciones tributarias en cuanto a dependencia económica, no es necesario la titularidad del padre.</p>
+				</div>						
+			</div>
+			<hr class="style2">
+		</div>
+	</div>
+</div>
+<div class="infoDebtor">
+	<div class="p-3">
+		<div class="card">
+			<div class="card-header">
+				<div class="card_tittle">
+					<div class='row'>
+						<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Información del Deudor</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="alert alert-primary">	
+					<div class="row p-1">
+						<div class="col-md-12 labelDiv" id="label_copy_debtor">
+							<span class="label label-default font-weight-bold">Si desea copiar los datos del Padre, Madre o Deudor (año anterior), seleccione a continuación alguna de las opciones</span>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-12 inputGroupContainer">
+							<div class="input-group">
+								<select class='form-control novelty form-control-sm' id="copy_debtor">
+									<option value='--' selected>--</option>
+									<option value='1'>Padre</option>
+									<option value='2'>Madre</option>
+									<option value='3'>Otro</option>								
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<form id="formInfoDebtor" autocomplete="off">
+					<div class="col-md-12">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Principal del Deudor
+							</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 p-1 title labelDiv" id="label_debtor_last_name"><span class="label label-default font-weight-bold">Apellidos</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_debtor_names"><span class="label label-default font-weight-bold">Nombres</span></div>
+							<div class="col-md-2 p-1 title labelDiv" id="label_debtor_email"><span class="label label-default font-weight-bold">Correo</span></div>
+							<div class="col-md-2 p-1 title labelDiv" id="label_debtor_mobile"><span class="label label-default font-weight-bold">Celular</span></div>
+							<div class="col-md-2 p-1 title labelDiv" id="label_debtor_phone_home"><span class="label label-default font-weight-bold">Teléfono Residencia</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="debtor_last_name" placeholder="Apellidos" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="debtor_names" placeholder="Nombres" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="debtor_email" placeholder="Correo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><div class="" id="debtor_Emogic"></div><input id="debtor_mobile" placeholder="Celular" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="debtor_phone_home" placeholder="Teléfono" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_debtor_selectAddrHome"><span class="label label-default font-weight-bold">Dirección de Residencia</span></div>
+							<div class="col-md-3 title labelDiv" id="label_debtor_selectDeptoHome"><span class="label label-default font-weight-bold">Departamento de Residencia</span></div>
+							<div class="col-md-3 title labelDiv" id="label_debtor_selectCityHome"><span class="label label-default font-weight-bold">Ciudad de Residencia</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="debtor_selectAddrHome"></div><div class="input-group col-md-8"><input id="debtor_nuv" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="debtor_pnu" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="debtor_snu" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="debtor_iad" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="debtor_selectDeptoHome"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="debtor_selectCityHome"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Documento de Identidad</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 title labelDiv" id="label_debtor_selectTypeDoc"><span class="label label-default font-weight-bold">Tipo</span></div>
+							<div class="col-md-4 title labelDiv" id="label_debtor_number_doc"><span class="label label-default font-weight-bold">Número</span></div>
+							<div class="col-md-6 title labelDiv" id="label_debtor_selectExp">
+								<div class="row">
+									<div class="col-md-12">
+										<span class="label label-default font-weight-bold">Lugar de Expedición</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6" id="label_debtor_selectDeptoExp"><span class="" style="font-size: 10px">(Departamento)</span></div>
+									<div class="col-md-6" id="label_debtor_selectCityExp"><span class="" style="font-size: 10px">(Ciudad)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="debtor_selectTypeDoc"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="debtor_number_doc" placeholder="Número Documento" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="debtor_selectDeptoExp"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="debtor_selectCityExp"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Laboral</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-4 title labelDiv" id="label_debtor_company"><span class="label label-default font-weight-bold">Empresa</span></div>
+							<div class="col-md-4 title labelDiv" id="label_debtor_position"><span class="label label-default font-weight-bold">Cargo</span></div>
+							<div class="col-md-4 title labelDiv" id="label_debtor_occupation"><span class="label label-default font-weight-bold">Profesión</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="debtor_company" placeholder="Empresa" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="debtor_position" placeholder="Cargo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="debtor_occupation" placeholder="Profesión" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_debtor_selectAddr_job"><span class="label label-default font-weight-bold">Dirección de Oficina</span></div>
+							<div class="col-md-4 title labelDiv" id="label_debtor_phone_job"><span class="label label-default font-weight-bold">Teléfono Oficina</span></div>
+							<div class="col-md-2 title labelDiv" id="label_debtor_service_time"><span class="label label-default font-weight-bold">Tiempo de Servicio</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="debtor_selectAddr_job"></div><div class="input-group col-md-8"><input id="debtor_nuv_job" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="debtor_pnu_job" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="debtor_snu_job" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="debtor_iad_job" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-8"><input id="debtor_phone_job" placeholder="Teléfono Oficina" class="form-control form-control-sm" value="" type="text">&nbsp;Ext:</div><div class="input-group col-md-4"><input id="debtor_ext_job" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="debtor_service_time" placeholder="Tiempo de Servicio" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 inputGroupContainer">
+								<span id="errorMessage" class="animated infinite flash"></span>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="infoCodebtor">
+	<div class="p-3">
+		<div class="card">
+			<div class="card-header">
+				<div class="card_tittle">
+					<div class='row'>
+						<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Información del Codeudor</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="col-md-12">
+					<div class="alert alert-primary">	
+						<div class="row p-1">
+							<div class="col-md-12 labelDiv" id="label_copy_codebtor">
+								<span class="label label-default font-weight-bold">Si desea copiar los datos del Padre, Madre o Codeudor (año anterior), seleccione a continuación alguna de las opciones</span>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-12 inputGroupContainer">
+								<div class="input-group">
+									<select class='form-control novelty form-control-sm' id="copy_codebtor">
+										<option value='--' selected>--</option>
+										<option value='1'>Padre</option>
+										<option value='2'>Madre</option>
+										<option value='3'>Otro</option>							
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form id="formInfoCodebtor" autocomplete="off">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Principal del Codeudor
+							</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 p-1 title labelDiv" id="label_codebtor_last_name"><span class="label label-default font-weight-bold">Apellidos</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_codebtor_names"><span class="label label-default font-weight-bold">Nombres</span></div>
+							<div class="col-md-2 p-1 title labelDiv" id="label_codebtor_email"><span class="label label-default font-weight-bold">Correo</span></div>
+							<div class="col-md-2 p-1 title labelDiv" id="label_codebtor_mobile"><span class="label label-default font-weight-bold">Celular</span></div>
+							<div class="col-md-2 p-1 title labelDiv" id="label_codebtor_phone_home"><span class="label label-default font-weight-bold">Teléfono Residencia</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="codebtor_last_name" placeholder="Apellidos" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="codebtor_names" placeholder="Nombres" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="codebtor_email" placeholder="Correo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><div class="" id="codebtor_Emogic"></div><input id="codebtor_mobile" placeholder="Celular" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="codebtor_phone_home" placeholder="Teléfono" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_codebtor_selectAddrHome"><span class="label label-default font-weight-bold">Dirección de Residencia</span></div>
+							<div class="col-md-3 title labelDiv" id="label_codebtor_selectDeptoHome"><span class="label label-default font-weight-bold">Departamento de Residencia</span></div>
+							<div class="col-md-3 title labelDiv" id="label_codebtor_selectCityHome"><span class="label label-default font-weight-bold">Ciudad de Residencia</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="codebtor_selectAddrHome"></div><div class="input-group col-md-8"><input id="codebtor_nuv" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="codebtor_pnu" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="codebtor_snu" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="codebtor_iad" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="codebtor_selectDeptoHome"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="codebtor_selectCityHome"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Documento de Identidad</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 title labelDiv" id="label_codebtor_selectTypeDoc"><span class="label label-default font-weight-bold">Tipo</span></div>
+							<div class="col-md-4 title labelDiv" id="label_codebtor_number_doc"><span class="label label-default font-weight-bold">Número</span></div>
+							<div class="col-md-6 title labelDiv" id="label_codebtor_selectExp">
+								<div class="row">
+									<div class="col-md-12">
+										<span class="label label-default font-weight-bold">Lugar de Expedición</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6" id="label_codebtor_selectDeptoExp"><span class="" style="font-size: 10px">(Departamento)</span></div>
+									<div class="col-md-6" id="label_codebtor_selectCityExp"><span class="" style="font-size: 10px">(Ciudad)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="codebtor_selectTypeDoc"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="codebtor_number_doc" placeholder="Número Documento" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="codebtor_selectDeptoExp"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="codebtor_selectCityExp"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Laboral</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-4 title labelDiv" id="label_codebtor_company"><span class="label label-default font-weight-bold">Empresa</span></div>
+							<div class="col-md-4 title labelDiv" id="label_codebtor_position"><span class="label label-default font-weight-bold">Cargo</span></div>
+							<div class="col-md-4 title labelDiv" id="label_codebtor_occupation"><span class="label label-default font-weight-bold">Profesión</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="codebtor_company" placeholder="Empresa" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="codebtor_position" placeholder="Cargo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="codebtor_occupation" placeholder="Profesión" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_codebtor_selectAddr_job"><span class="label label-default font-weight-bold">Dirección de Oficina</span></div>
+							<div class="col-md-4 title labelDiv" id="label_codebtor_phone_job"><span class="label label-default font-weight-bold">Teléfono Oficina</span></div>
+							<div class="col-md-2 title labelDiv" id="label_codebtor_service_time"><span class="label label-default font-weight-bold">Tiempo de Servicio</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="codebtor_selectAddr_job"></div><div class="input-group col-md-8"><input id="codebtor_nuv_job" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="codebtor_pnu_job" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="codebtor_snu_job" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="codebtor_iad_job" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-8"><input id="codebtor_phone_job" placeholder="Teléfono Oficina" class="form-control form-control-sm" value="" type="text">&nbsp;Ext:</div><div class="input-group col-md-4"><input id="codebtor_ext_job" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="codebtor_service_time" placeholder="Tiempo de Servicio" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 inputGroupContainer">
+								<span id="errorMessage" class="animated infinite flash"></span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

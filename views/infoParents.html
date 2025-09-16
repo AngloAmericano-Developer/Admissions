@@ -1,0 +1,448 @@
+<form id="formInfoParents" autocomplete="off">
+	<div class="p-3">
+		<div class="card">
+			<div class="card-header">
+				<div class="card_tittle">
+					<div class='row'>
+						<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Datos de los Padres</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-body ">
+				<div class="row alert alert-info">
+					<div class="col-md-12">
+						<p class="text-justify">En caso de presentarse divorcio, separación o viudez de los padres en el transcurso del año, es importante que notifiquen la novedad al correo "admisionesymatriculas@caa.edu.co", para saber quién tendrá la custodia del estudiante.</p>
+						<p class="text-justify">Si su estado civil es divorciado, separado o padres solteros, es obligatorio diligenciar la información básica del padre o madre que no convive con el estudiante (nombres y apellidos completos y documento de identidad), a excepción de padres adoptantes o viudos.</p>
+					</div>						
+				</div>
+				<hr class="style2">
+				<div class="row p-1">
+					<div class="col-md-6 title labelDiv" id="label_selectCivilStatus"><span class="label label-default font-weight-bold">Estado Civil de los Padres</span></div>
+					<div class="col-md-6 title labelDiv" id="label_adopted_son"><span class="label label-default font-weight-bold">Hijo Adoptivo</span></div>
+				</div>
+				<div class="row p-1">
+					<div class="col-md-6 inputGroupContainer">
+						<div class="input-group" id="selectCivilStatus"></div>
+						<div class="animated fadeInDown d-none" id="div_custody">
+							<div class="title"><span class="label label-default">Custodia</span></div>	
+							<div class="alert alert-danger">
+								<div class="col-md-12">
+									<p class="text-justify">¿En cabeza de quien está el menor?</p>
+									<!-- <p class="text-justify">La custodia de los menores por regla general está en cabeza del padre y madre, en caso de existir divergencia, deberán enviar al correo "admisiones@caa.edu.co" el documento correspondiente emitido por la autoridad competente.</p> -->
+<!-- 									<p class="text-justify">La custodia del menor por regla general está en cabeza del padre y madre, en caso de existir divergencia, deberán adjuntar el documento correspondiente emitido por la autoridad competente.</p> -->
+								</div>					
+							</div>	
+							<!-- <div class="animated fadeInDown" id="label_doc_custodia">
+								<div class="inputGroupContainer d-flex labelDiv" id="label_custodia">
+									<input type="file" class="form-control form-control-file" id="doc_custodia" name="doc_custodia">
+									<button class="btn btn-outline-info btn-subir-archivo" type="button" id="btn_doc_custodia" onclick="subir_custodia()" >Cargar</button>
+								</div> 
+							</div>	 -->
+							<div class="input-group p-2">
+								<select class='form-control novelty form-control-sm' id="custody" >
+									<option value='--' selected>--</option>
+									<option value='Padre'>Padre</option>
+									<option value='Madre'>Madre</option>
+									<option value='Compartida'>Compartida</option>
+									<option value='Otro'>Otro</option>
+								</select>
+							</div>
+							<div class="input-group p-2 animated fadeInDown d-none" id="div_recoge_padre">
+								<div class="col-md-9 inputGroupContainer title">
+									<span class="label label-default">¿El padre de familia podrá recoger el estudiante cuando se requiera?</span>
+								</div>
+								<div class="col-md-3 inputGroupContainer title">
+									<div class="btn-group" data-toggle="buttons">
+										<label class='btn btn-outline-success btn-sm recoge_padre' data-val='Si'><input class='form-control' type='radio' name='recoge_padre'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+										<label class='btn btn-outline-danger btn-sm recoge_padre' data-val='No'><input class='form-control' type='radio' name='recoge_padre'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+									</div>
+								</div>
+							</div>
+							<div class="input-group p-2 animated fadeInDown d-none" id="div_recoge_madre">
+								<div class="col-md-9 inputGroupContainer title">
+									<span class="label label-default">¿La madre de familia podrá recoger el estudiante cuando se requiera?</span>
+								</div>
+								<div class="col-md-3 inputGroupContainer title">
+									<div class="btn-group" data-toggle="buttons">
+										<label class='btn btn-outline-success btn-sm recoge_madre' data-val='Si'><input class='form-control' type='radio' name='recoge_madre'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+										<label class='btn btn-outline-danger btn-sm recoge_madre' data-val='No'><input class='form-control' type='radio' name='recoge_madre'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="animated fadeInDown d-none" id="div_custody_other">
+							<div class="input-group p-2 col-md-12 col-sm-6">
+								<div class="input-group">
+									<input id="custody_other" placeholder="Nombres de quien tiene la custodia" class="form-control form-control-sm" value="" type="text">
+									<input id="custody_other_parentezco" placeholder="Parentezco" class="form-control form-control-sm" value="" type="text">
+								</div>
+							</div>
+							<div class="input-group p-2 col-md-12 col-sm-6">
+								<div class="input-group">
+									<input id="custody_other_cedula" placeholder="Cédula" class="form-control form-control-sm" value="" type="number">
+									<input id="custody_other_celphone" placeholder="Celular" class="form-control form-control-sm" value="" type="number">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 inputGroupContainer">
+						<div class="btn-group" data-toggle="buttons">
+							<label class='btn btn-outline-success btn-sm adopted_son' data-val='Si'><input class='form-control' type='radio' name='adopted_son'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+							<label class='btn btn-outline-danger btn-sm adopted_son' data-val='No'><input class='form-control' type='radio' name='adopted_son'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+						</div>
+						<div class="animated fadeInDown d-none" id="div_adopted_son">
+							<div class="input-group p-2">
+								<div class="input-group"><input id="reason_adopted_son" placeholder="Edad de adopción" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="infoFather">
+		<div class="p-3">
+			<div class="card">
+				<div class="card-header">
+					<div class="card_tittle">
+						<div class='row'>
+							<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Información del Padre</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="col-md-12">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Principal del Padre
+							</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 p-1 title labelDiv" id="label_father_last_name"><span class="label label-default font-weight-bold">Apellidos</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_father_names"><span class="label label-default font-weight-bold">Nombres</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_father_email"><span class="label label-default font-weight-bold">Correo</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_father_mobile"><span class="label label-default font-weight-bold">Celular</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="father_last_name" placeholder="Apellidos" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="father_names" placeholder="Nombres" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="father_email" placeholder="Correo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group">
+									<div class="" id="selectEmogicFather"></div>
+									<input id="father_mobile" placeholder="Celular" class="form-control form-control-sm" value="" type="number"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-3 p-1 title labelDiv" id="label_father_date_nac"><span class="label label-default font-weight-bold">Fecha de Nacimiento</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_father_age"><span class="label label-default font-weight-bold">Edad</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_father_selectCountryNac"><span class="label label-default font-weight-bold">País de Nacimiento</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_father_selectCityNac"><span class="label label-default font-weight-bold">Ciudad de Nacimiento</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="father_date_nac" class="form-control form-control-sm" value="" type="date"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="father_age" placeholder="Edad" class="form-control form-control-sm" value="" type="text" disabled="disabled"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="father_selectCountryNac"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="father_selectCityNac"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_father_selectAddrHome"><span class="label label-default font-weight-bold">Dirección de Residencia</span></div>
+							<div class="col-md-2 title labelDiv" id="label_father_selectDeptoHome"><span class="label label-default font-weight-bold">Departamento de Residencia</span></div>
+							<div class="col-md-2 title labelDiv" id="label_father_selectCityHome"><span class="label label-default font-weight-bold">Ciudad de Residencia</span></div>
+							<div class="col-md-2 p-1 title labelDiv" id="label_father_phone_home"><span class="label label-default font-weight-bold">Teléfono Residencia</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="father_selectAddrHome"></div><div class="input-group col-md-8"><input id="father_nuv" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="father_pnu" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="father_snu" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="father_iad" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="father_selectDeptoHome"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="father_selectCityHome"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="father_phone_home" placeholder="Teléfono" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Documento de Identidad</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 title labelDiv" id="label_father_selectTypeDoc"><span class="label label-default font-weight-bold">Tipo</span></div>
+							<div class="col-md-2 title labelDiv" id="label_father_number_doc"><span class="label label-default font-weight-bold">Número</span></div>
+							<div class="col-md-2 title labelDiv" id="label_father_date_exp_doc"><span class="label label-default font-weight-bold">Fecha Expedición</span></div>
+							<div class="col-md-6 title labelDiv" id="label_father_selectExp">
+								<div class="row">
+									<div class="col-md-12">
+										<span class="label label-default font-weight-bold">Lugar de Expedición</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6" id="label_father_selectDeptoExp"><span class="" style="font-size: 10px">(Departamento)</span></div>
+									<div class="col-md-6" id="label_father_selectCityExp"><span class="" style="font-size: 10px">(Ciudad)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="father_selectTypeDoc"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="father_number_doc" placeholder="Número Documento" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="father_date_exp_doc" class="form-control form-control-sm" value="" type="date"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="father_selectDeptoExp"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="father_selectCityExp"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Laboral</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-4 title labelDiv" id="label_father_company"><span class="label label-default font-weight-bold">Empresa</span></div>
+							<div class="col-md-4 title labelDiv" id="label_father_position"><span class="label label-default font-weight-bold">Cargo</span></div>
+							<div class="col-md-4 title labelDiv" id="label_father_occupation"><span class="label label-default font-weight-bold">Profesión</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="father_company" placeholder="Empresa" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="father_position" placeholder="Cargo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="father_occupation" placeholder="Profesión" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_father_selectAddr_job"><span class="label label-default font-weight-bold">Dirección de Oficina</span></div>
+							<div class="col-md-4 title labelDiv" id="label_father_phone_job"><span class="label label-default font-weight-bold">Teléfono Oficina</span></div>
+							<div class="col-md-2 title labelDiv" id="label_father_service_time"><span class="label label-default font-weight-bold">Tiempo de Servicio</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="father_selectAddr_job"></div><div class="input-group col-md-8"><input id="father_nuv_job" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="father_pnu_job" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="father_snu_job" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="father_iad_job" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-8"><input id="father_phone_job" placeholder="Teléfono Oficina" class="form-control form-control-sm" value="" type="text">&nbsp;Ext:</div><div class="input-group col-md-4"><input id="father_ext_job" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="father_service_time" placeholder="Tiempo de Servicio" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 inputGroupContainer">
+								<span id="errorMessage" class="animated infinite flash"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="infoMother">
+		<div class="p-3">
+			<div class="card">
+				<div class="card-header">
+					<div class="card_tittle">
+						<div class='row'>
+							<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Información de la Madre</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="col-md-12">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Principal de la Madre
+							</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 p-1 title labelDiv" id="label_mother_last_name"><span class="label label-default font-weight-bold">Apellidos</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_mother_names"><span class="label label-default font-weight-bold">Nombres</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_mother_email"><span class="label label-default font-weight-bold">Correo</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_mother_mobile"><span class="label label-default font-weight-bold">Celular</span></div>
+							
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="mother_last_name" placeholder="Apellidos" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="mother_names" placeholder="Nombres" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="mother_email" placeholder="Correo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group">
+									
+							
+									<div class="" id="selectEmogicMother"></div>
+									<input id="mother_mobile" placeholder="Celular" class="form-control form-control-sm" value="" type="number">
+								</div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-3 p-1 title labelDiv" id="label_mother_date_nac"><span class="label label-default font-weight-bold">Fecha de Nacimiento</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_mother_age"><span class="label label-default font-weight-bold">Edad</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_mother_selectCountryNac"><span class="label label-default font-weight-bold">País de Nacimiento</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_mother_selectCityNac"><span class="label label-default font-weight-bold">Ciudad de Nacimiento</span></div>
+							
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="mother_date_nac" class="form-control form-control-sm" value="" type="date"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="mother_age" placeholder="Edad" class="form-control form-control-sm" value="" type="text" disabled="disabled"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="mother_selectCountryNac"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="mother_selectCityNac"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_mother_selectAddrHome"><span class="label label-default font-weight-bold">Dirección de Residencia</span></div>
+							<div class="col-md-2 title labelDiv" id="label_mother_selectDeptoHome"><span class="label label-default font-weight-bold">Departamento de Residencia</span></div>
+							<div class="col-md-2 title labelDiv" id="label_mother_selectCityHome"><span class="label label-default font-weight-bold">Ciudad de Residencia</span></div>
+							<div class="col-md-2 p-1 title labelDiv" id="label_mother_phone_home"><span class="label label-default font-weight-bold">Teléfono Residencia</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="mother_selectAddrHome"></div><div class="input-group col-md-8"><input id="mother_nuv" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="mother_pnu" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="mother_snu" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="mother_iad" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="mother_selectDeptoHome"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="mother_selectCityHome"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="mother_phone_home" placeholder="Teléfono" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Documento de Identidad</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 title labelDiv" id="label_mother_selectTypeDoc"><span class="label label-default font-weight-bold">Tipo</span></div>
+							<div class="col-md-2 title labelDiv" id="label_mother_number_doc"><span class="label label-default font-weight-bold">Número</span></div>
+							<div class="col-md-2 title labelDiv" id="label_mother_date_exp_doc"><span class="label label-default font-weight-bold">Fecha Expedición</span></div>
+							<div class="col-md-6 title labelDiv" id="label_mother_selectExp">
+								<div class="row">
+									<div class="col-md-12">
+										<span class="label label-default font-weight-bold">Lugar de Expedición</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6" id="label_mother_selectDeptoExp"><span class="" style="font-size: 10px">(Departamento)</span></div>
+									<div class="col-md-6" id="label_mother_selectCityExp"><span class="" style="font-size: 10px">(Ciudad)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="mother_selectTypeDoc"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="mother_number_doc" placeholder="Número Documento" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="mother_date_exp_doc" class="form-control form-control-sm" value="" type="date"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="mother_selectDeptoExp"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="mother_selectCityExp"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Laboral</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-4 title labelDiv" id="label_mother_company"><span class="label label-default font-weight-bold">Empresa</span></div>
+							<div class="col-md-4 title labelDiv" id="label_mother_position"><span class="label label-default font-weight-bold">Cargo</span></div>
+							<div class="col-md-4 title labelDiv" id="label_mother_occupation"><span class="label label-default font-weight-bold">Profesión</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="mother_company" placeholder="Empresa" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="mother_position" placeholder="Cargo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="mother_occupation" placeholder="Profesión" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_mother_selectAddr_job"><span class="label label-default font-weight-bold">Dirección de Oficina</span></div>
+							<div class="col-md-4 title labelDiv" id="label_mother_phone_job"><span class="label label-default font-weight-bold">Teléfono Oficina</span></div>
+							<div class="col-md-2 title labelDiv" id="label_mother_service_time"><span class="label label-default font-weight-bold">Tiempo de Servicio</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="mother_selectAddr_job"></div><div class="input-group col-md-8"><input id="mother_nuv_job" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="mother_pnu_job" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="mother_snu_job" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="mother_iad_job" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-8"><input id="mother_phone_job" placeholder="Teléfono Oficina" class="form-control form-control-sm" value="" type="text">&nbsp;Ext:</div><div class="input-group col-md-4"><input id="mother_ext_job" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group"><input id="mother_service_time" placeholder="Tiempo de Servicio" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 inputGroupContainer">
+								<span id="errorMessage" class="animated infinite flash"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

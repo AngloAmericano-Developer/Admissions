@@ -1,0 +1,506 @@
+<form id="formInfoAdditional" autocomplete="off">
+	<div class="p-3">
+		<div class="card">
+			<div class="card-header">
+				<div class="card_tittle">
+					<div class='row'>
+						<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Servicios</div>
+					</div>
+				</div>
+			</div>
+			<video autoplay loop muted>
+				<source src="../../documentos/Admissions/images/Alimentos-Transporte-Gris.mp4" type="video/mp4" width="full">
+			</video>	
+			<div class="card-body">
+				<div class="row p-1">
+					<div class="col-md-12" id="services" aria-disabled="true"></div>
+					<hr class="style2">
+				</div>
+				<div class="row p-1">
+					<div class="animated fadeInDown" id="razon_services_mn" aria-disabled="true">
+						<div id="habilitaMediasNueves">
+							<div class="title main-contentMediasNuenves animated labelDiv d-none" id="titleMediasnueves"><span class="label label-default">¿Por qué no toma el servicio de medias nueves?</span></div>	
+							<div class="container-fluid main-contentMediasNuenves animated fadeInDown d-none" id="main-contentMediasNuenves">
+								<div class="container text-left">
+									<div class="row">
+										<div class="col-12 col-md-6 col-lg-6 form-check" id="label_launchMotiveE">
+											<input class="form-check-input checkmediasnueves" type="checkbox" id="checkmediasnueves_0" name="checkmediasnueves" value="1" onchange="datoSeleccionadoRazonServer()" />
+											<label class="form-check-label" for="inlineCheckbox1">Económicos</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkmediasnueves" type="checkbox" id="checkmediasnueves_3" name="checkmediasnueves" value="8" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Opción de menú</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkmediasnueves" type="checkbox" id="checkmediasnueves_1" name="checkmediasnueves" value="3" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Calidad de servicio</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkmediasnueves" type="checkbox" id="checkmediasnueves_2" name="checkmediasnueves" value="4" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Servicio al cliente</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkmediasnueves" type="checkbox" id="checkmediasnueves_4" name="checkmediasnueves" value="7" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Salud</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkmediasnueves" type="checkbox" id="checkmediasnueves_5" name="checkmediasnueves" value="6" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Otro</label>
+										</div>
+										<div class="col-12 col-md-12 col-lg-12 form-check d-none animated fadeInDown" id="textRazonMN">
+											<textarea class="form-control"  placeholder="¿Cúal?" id="checkmediasnueves_6"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="animated fadeInDown " id="razon_services_al" aria-disabled="true">
+						<div id="habilitaAlimento">
+							<div class="title main-contentAlimento animated labelDiv d-none" id="titleAlmuerzo"><span class="label label-default">¿Por qué no toma el servicio de almuerzo?</span></div>	
+							<div class="container-fluid animated fadeInDown d-none" id="mensajeNoalimento">
+								<p class="row alert alert-danger">
+									El servicio de alimentación se prestará únicamente a los estudiantes con servicio contratado; opciones como: pago por consumo al día o cargos al recibo de pensión no se encuentran disponibles.<br>
+									(No es necesario cancelar el servicio)
+								</p>
+							</div>
+							<div class="container-fluid main-contentAlimento animated fadeInDown d-none" id="main-contentAlimento">
+								<div class="container text-left">
+									<div class="row">
+										<div class="col-12 col-md-6 col-lg-6 form-check" id="label_launchMotiveE">
+											<input class="form-check-input checkalmuerzo" type="checkbox" id="checkalmuerzo_0" name="checkalmuerzo" value="1" onchange="datoSeleccionadoRazonServer()" />
+											<label class="form-check-label" for="inlineCheckbox1">Económicos</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkalmuerzo" type="checkbox" id="checkalmuerzo_3" name="checkalmuerzo" value="8" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Opción de menú</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkalmuerzo" type="checkbox" id="checkalmuerzo_1" name="checkalmuerzo" value="3" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Calidad de servicio</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkalmuerzo" type="checkbox" id="checkalmuerzo_2" name="checkalmuerzo" value="4" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Servicio al cliente</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkalmuerzo" type="checkbox" id="checkalmuerzo_4" name="checkalmuerzo" value="7" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Salud</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input checkalmuerzo" type="checkbox" id="checkalmuerzo_5" name="checkalmuerzo" value="6" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Otro</label>
+										</div>
+										<div class="col-12 col-md-12 col-lg-12 form-check d-none animated fadeInDown" id="textRazonA">
+											<textarea class="form-control"  placeholder="¿Cúal?" id="checkalmuerzo_6"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="animated fadeInDown " id="razon_services_tr" aria-disabled="true">	
+						<div id="habilitaTransporte">
+							<div class="title main-contentTransporte animated labelDiv d-none" id="titleTransporte"><span class="label label-default">¿Por qué no toma el servicio de Transporte?</span></div>	
+							<div class="container-fluid main-contentTransporte animated fadeInDown d-none" id="main-contentTransporte">
+								<div class="container text-left">
+									<div class="row">
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input " type="checkbox" id="checktransporte_0" name="checktransporte" value="1" onchange="datoSeleccionadoRazonServer()" />
+											<label class="form-check-label" for="inlineCheckbox1">Económico</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input" type="checkbox" id="checktransporte_1"  name="checktransporte" value="2" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Vive cerca al colegio</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input" type="checkbox" id="checktransporte_2" name="checktransporte" value="3" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Calidad de servicio</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input" type="checkbox" id="checktransporte_3" name="checktransporte" value="4" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Servicio al cliente</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input" type="checkbox" id="checktransporte_4" name="checktransporte" value="5" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Horario</label>
+										</div>
+										<div class="col-12 col-md-6 col-lg-6 form-check">
+											<input class="form-check-input" type="checkbox" id="checktransporte_5" name="checktransporte" value="6" onchange="datoSeleccionadoRazonServer()">
+											<label class="form-check-label" for="inlineCheckbox1">Otro</label>
+										</div>
+										<div class="col-12 col-md-12 col-lg-12 form-check d-none animated fadeInDown" id="textRazonT">
+											<textarea class="form-control"  placeholder="¿Cúal?" id="checktransporte_6"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ingreso de cancelación -->
+				<div class="row p-1" id="div_cancel">
+					<div class="col-md-12">
+						<div class="row p-1">
+							<div class="col-md-12 title labelDiv" id="label_cancelar">
+								<span class="label label-default font-weight-bold" id="cancelarLabel"></span>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-12">
+								<div class="btn-group" data-toggle="buttons">
+									<button type="button" id="viewCancel" class="btn btn-primary btn-sm">Cancelar servicio <i class="fa fa-xmark"></i></button>
+								</div>
+							</div>		
+						</div>
+					</div>						
+				</div>
+
+
+
+
+
+
+				<div class="row p-1">
+					<div class="col-md-12" id="photo">
+						<div class="row p-1">
+							<div class="col-md-12 title labelDiv" id="label_auth_photo">
+								<span class="label label-default font-weight-bold">¿Autoriza el uso y publicación de fotos y videos con fines institucionales? (Redes Sociales, actividades académicas y extraescolares como show de talentos, jornadas deportivas, día de los niños, entre otros).</span>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-12">
+								<div class="btn-group" data-toggle="buttons">
+									<label class='btn btn-outline-success btn-sm auth_photo' data-val='Si'><input class='form-control' id="div_nota_no" type='radio' name='auth_photo'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+									<label class='btn btn-outline-danger btn-sm auth_photo' data-val='No'><input class='form-control' id="div_nota" type='radio' name='auth_photo'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+								</div>
+							</div>		
+						</div>
+						<div class="row alert alert-danger d-none animated fadeInDown" id="div_nota_foto">
+							<div class="col-md-12">
+								<ul style="font-size:14px;">
+									<li><p class="text-justify"><b>Nota 1: </b>Recuerde que no se le tomarán fotos a su hijo(a) en actividades académicas, extraescolares, show de talentos, jornada deportiva, día de los niños, prom, anuarios y actividades de la asociación de padres de familia.</p></li>
+									<li><p class="text-justify"><b>Nota 2: </b>Recuerde que la foto de carné sí es necesaria para la identificación como estudiante de la institución.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr class="style2">
+
+
+	<div class="row p-1">
+		<div class="col-md-12 title"><span class="label label-default font-weight-bold">Grupo Familiar en el Colegio</span></div>
+	</div>
+	<div id="brothers" class="d-none">
+		<div class="row p-1">
+			<div class="col-md-1 title"><span class="label label-default font-weight-bold">N°</span></div>
+			<div class="col-md-3 title"><span class="label label-default font-weight-bold">Apellidos</span></div>
+			<div class="col-md-3 title"><span class="label label-default font-weight-bold">Nombres</span></div>
+			<div class="col-md-3 title"><span class="label label-default font-weight-bold">Curso</span></div>
+			<div class="col-md-2 title"><span class="label label-default font-weight-bold">Eliminar</span></div>
+		</div>
+	</div>
+	<div class="row p-1">
+		<div class="col-md-12 inputGroupContainer">
+			<button type="button" id="addBrother" class="btn btn-primary btn-sm">Agregar Hermanos (CAA) <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+	<div class="infoTutor">
+		<div class="p-3">
+			<div class="card">
+				<div class="card-header">
+					<div class="card_tittle">
+						<div class='row'>
+							<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Información del Acudiente</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="row alert alert-danger">
+						<div class="col-md-12">
+							<p class="text-center">Recuerde que la persona registrada debe ser diferente a los padres.</p>
+						</div>						
+					</div>
+					<div class="col-md-12">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Principal</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 p-1 title labelDiv" id="label_tutor_last_name"><span class="label label-default font-weight-bold">Apellidos</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_tutor_names"><span class="label label-default font-weight-bold">Nombres</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_tutor_email"><span class="label label-default font-weight-bold">Correo</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_tutor_mobile"><span class="label label-default font-weight-bold">Celular</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="tutor_last_name" placeholder="Apellidos" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="tutor_names" placeholder="Nombres" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="tutor_email" placeholder="Correo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="tutor_mobile" placeholder="Celular" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_tutor_selectAddrHome"><span class="label label-default font-weight-bold">Dirección de Residencia</span></div>
+							<div class="col-md-3 title labelDiv" id="label_tutor_phone_home"><span class="label label-default font-weight-bold">Teléfono Residencia</span></div>
+							<div class="col-md-3 title labelDiv" id="label_tutor_relationship"><span class="label label-default font-weight-bold">Parentesco</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="tutor_selectAddrHome"></div><div class="input-group col-md-8"><input id="tutor_nuv" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="tutor_pnu" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="tutor_snu" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="tutor_iad" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="tutor_phone_home" placeholder="Teléfono" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="tutor_relationship" placeholder="Parentesco" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Documento de Identidad</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 title labelDiv" id="label_tutor_selectTypeDoc"><span class="label label-default font-weight-bold">Tipo</span></div>
+							<div class="col-md-4 title labelDiv" id="label_tutor_number_doc"><span class="label label-default font-weight-bold">Número</span></div>
+							<div class="col-md-6 title labelDiv" id="label_tutor_selectExp">
+								<div class="row">
+									<div class="col-md-12">
+										<span class="label label-default font-weight-bold">Lugar de Expedición</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6" id="label_tutor_selectDeptoExp"><span class="" style="font-size: 10px">(Departamento)</span></div>
+									<div class="col-md-6" id="label_tutor_selectCityExp"><span class="" style="font-size: 10px">(Ciudad)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="tutor_selectTypeDoc"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="tutor_number_doc" placeholder="Número Documento" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="tutor_selectDeptoExp"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="tutor_selectCityExp"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="p-3">
+		<div class="card">
+			<div class="card-header">
+				<div class="card_tittle">
+					<div class='row'>
+						<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Personas a contactar en caso de Emergencia</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="row alert alert-danger">
+					<div class="col-md-12">
+						<p class="text-center">Recuerde que la persona registrada debe ser diferente a los padres.</p>
+					</div>						
+				</div>
+				<div class="col-md-12">
+					<div class="infoEmergency">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Principal</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 p-1 title labelDiv" id="label_emergency_last_name"><span class="label label-default font-weight-bold">Apellidos</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_emergency_names"><span class="label label-default font-weight-bold">Nombres</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_emergency_email"><span class="label label-default font-weight-bold">Correo</span></div>
+							<div class="col-md-3 p-1 title labelDiv" id="label_emergency_mobile"><span class="label label-default font-weight-bold">Celular</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="emergency_last_name" placeholder="Apellidos" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="emergency_names" placeholder="Nombres" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="emergency_email" placeholder="Correo" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="emergency_mobile" placeholder="Celular" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-6 title labelDiv" id="label_emergency_selectAddrHome"><span class="label label-default font-weight-bold">Dirección de Residencia</span></div>
+							<div class="col-md-3 title labelDiv" id="label_emergency_phone_home"><span class="label label-default font-weight-bold">Teléfono Residencia</span></div>
+							<div class="col-md-3 title labelDiv" id="label_emergency_relationship"><span class="label label-default font-weight-bold">Parentesco</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-6 inputGroupContainer">
+								<div class="row">	 
+									<div class="input-group col-md-4" id="emergency_selectAddrHome"></div><div class="input-group col-md-8"><input id="emergency_nuv" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="emergency_pnu" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="emergency_snu" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="emergency_iad" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="emergency_phone_home" placeholder="Teléfono" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group"><input id="emergency_relationship" placeholder="Celular" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Documento de Identidad</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 title labelDiv" id="label_emergency_selectTypeDoc"><span class="label label-default font-weight-bold">Tipo</span></div>
+							<div class="col-md-4 title labelDiv" id="label_emergency_number_doc"><span class="label label-default font-weight-bold">Número</span></div>
+							<div class="col-md-6 title labelDiv" id="label_emergency_selectExp">
+								<div class="row">
+									<div class="col-md-12">
+										<span class="label label-default font-weight-bold">Lugar de Expedición</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6" id="label_emergency_selectDeptoExp"><span class="" style="font-size: 10px">(Departamento)</span></div>
+									<div class="col-md-6" id="label_emergency_selectCityExp"><span class="" style="font-size: 10px">(Ciudad)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group" id="emergency_selectTypeDoc"></div>
+							</div>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"><input id="emergency_number_doc" placeholder="Número Documento" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="emergency_selectDeptoExp"></div>
+							</div>
+							<div class="col-md-3 inputGroupContainer">
+								<div class="input-group" id="emergency_selectCityExp"></div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="row p-1">
+							<div class="col-md-12 title">
+								<span class="label label-default font-weight-bold">¿Desea agregar otro contacto de emergencia?</span>
+							</div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-12">
+								<div class="btn-group" data-toggle="buttons">
+									<label class='btn btn-outline-success btn-sm add_emerg' data-val='Si'><input class='form-control' type='radio' name='add_emerg'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+									<label class='btn btn-outline-danger btn-sm add_emerg' data-val='No'><input class='form-control' type='radio' name='add_emerg'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+								</div>
+							</div>
+						</div>
+						<hr class="style2">
+						<div class="animated fadeInDown d-none" id="emergency_add">
+							<div class="row p-1">
+								<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Principal</span></div>
+							</div>
+							<div class="row p-1">
+								<div class="col-md-3 p-1 title labelDiv" id="label_emergency_add_last_name"><span class="label label-default font-weight-bold">Apellidos</span></div>
+								<div class="col-md-3 p-1 title labelDiv" id="label_emergency_add_names"><span class="label label-default font-weight-bold">Nombres</span></div>
+								<div class="col-md-3 p-1 title labelDiv" id="label_emergency_add_email"><span class="label label-default font-weight-bold">Correo</span></div>
+								<div class="col-md-3 p-1 title labelDiv" id="label_emergency_add_mobile"><span class="label label-default font-weight-bold">Celular</span></div>
+							</div>
+							<div class="row p-1">
+								<div class="col-md-3 inputGroupContainer">
+									<div class="input-group"><input id="emergency_add_last_name" placeholder="Apellidos" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+								<div class="col-md-3 inputGroupContainer">
+									<div class="input-group"><input id="emergency_add_names" placeholder="Nombres" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+								<div class="col-md-3 inputGroupContainer">
+									<div class="input-group"><input id="emergency_add_email" placeholder="Correo" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+								<div class="col-md-3 inputGroupContainer">
+									<div class="input-group"><input id="emergency_add_mobile" placeholder="Celular" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<hr class="style2">
+							<div class="row p-1">
+								<div class="col-md-6 title labelDiv" id="label_emergency_add_selectAddrHome"><span class="label label-default font-weight-bold">Dirección de Residencia</span></div>
+								<div class="col-md-3 title labelDiv" id="label_emergency_add_phone_home"><span class="label label-default font-weight-bold">Teléfono Residencia</span></div>
+								<div class="col-md-3 title labelDiv" id="label_emergency_add_relationship"><span class="label label-default font-weight-bold">Parentesco</span></div>
+							</div>
+							<div class="row p-1">
+								<div class="col-md-6 inputGroupContainer">
+									<div class="row">	 
+										<div class="input-group col-md-4" id="emergency_add_selectAddrHome"></div><div class="input-group col-md-8"><input id="emergency_add_nuv" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="emergency_add_pnu" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="emergency_add_snu" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="emergency_add_iad" class="form-control form-control-sm" value="" type="text"></div>
+									</div>
+								</div>
+								<div class="col-md-3 inputGroupContainer">
+									<div class="input-group"><input id="emergency_add_phone_home" placeholder="Teléfono" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+								<div class="col-md-3 inputGroupContainer">
+									<div class="input-group"><input id="emergency_add_relationship" placeholder="Celular" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+							</div>
+							<hr class="style2">
+							<div class="row p-1">
+								<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Documento de Identidad</span></div>
+							</div>
+							<div class="row p-1">
+								<div class="col-md-2 title labelDiv" id="label_emergency_add_selectTypeDoc"><span class="label label-default font-weight-bold">Tipo</span></div>
+								<div class="col-md-4 title labelDiv" id="label_emergency_add_number_doc"><span class="label label-default font-weight-bold">Número</span></div>
+								<div class="col-md-6 title labelDiv" id="label_emergency_add_selectExp">
+									<div class="row">
+										<div class="col-md-12">
+											<span class="label label-default font-weight-bold">Lugar de Expedición</span>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6" id="label_emergency_add_selectDeptoExp"><span class="" style="font-size: 10px">(Departamento)</span></div>
+										<div class="col-md-6" id="label_emergency_add_selectCityExp"><span class="" style="font-size: 10px">(Ciudad)</span></div>
+									</div>
+								</div>
+							</div>
+							<div class="row p-1">
+								<div class="col-md-2 inputGroupContainer">
+									<div class="input-group" id="emergency_add_selectTypeDoc"></div>
+								</div>
+								<div class="col-md-4 inputGroupContainer">
+									<div class="input-group"><input id="emergency_add_number_doc" placeholder="Número Documento" class="form-control form-control-sm" value="" type="text"></div>
+								</div>
+								<div class="col-md-3 inputGroupContainer">
+									<div class="input-group" id="emergency_add_selectDeptoExp"></div>
+								</div>
+								<div class="col-md-3 inputGroupContainer">
+									<div class="input-group" id="emergency_add_selectCityExp"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

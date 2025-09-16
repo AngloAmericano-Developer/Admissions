@@ -1,0 +1,59 @@
+<div class="animated fadeInDown" id="alumnPage">
+  <div class="container-fluid">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Documentos</a>
+      </li>
+      <li class="breadcrumb-item active">Proceso de Matrículas</li>
+    </ol>
+    <!-- Area Chart Example -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fa fa-check"></i>
+        Información de Documentos de Matrícula
+      </div>
+      <div class="card-body">
+        <div class="control-group p-3 rounded alert-info">
+          <label class="label label-default font-weight-bold">Para consultar la información de los estudiantes con relación a los documentos de matrícula seleccione el curso y/o escriba los nombres o apellidos para buscar algún estudiante en específico.</label>
+        </div>
+        <div class="control-group p-3 rounded">
+          <div class="row text-center">
+            <div class="col-xl-2">
+              <label id="label_selectCourse" class="label label-default font-weight-bold">Curso</label>
+              <div class="input-group" id="selectCourse"></div>
+            </div>
+            <div class="col-xl-4">
+              <label id="label_last_names" class="label label-default font-weight-bold">Apellidos</label>
+              <div class="input-group"><input id="last_names" placeholder="Apellidos" class="form-control form-control-sm" value="" type="text"></div>
+            </div>
+            <div class="col-xl-4">
+              <label id="label_names" class="label label-default font-weight-bold">Nombres</label>
+              <div class="input-group"><input id="names" placeholder="Nombres" class="form-control form-control-sm" value="" type="text"></div>
+            </div>
+            <div class="col-xl-2">
+              <label class="control-label input-label font-weight-bold" id="label_filter">Nuevos</label><br>
+              <label class="checkbox centerItem"><input type="checkbox" class="btn btn-sm" id="filter"/><span class="primary"></span></label>
+            </div>
+          </div>
+          <div class="row text-center p-3">
+            <div class="col-xl-12">
+              <button class="btn btn-sm btn-primary" id="btnListed">Consultar <i class="fa fa-check-circle"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="control-group p-3 rounded">
+          <div class="row">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-10" id="div_listedDocs">
+            </div>
+            <div class="col-sm-1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+</div>

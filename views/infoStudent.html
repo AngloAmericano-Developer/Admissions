@@ -1,0 +1,567 @@
+<div class="p-3"></div>
+	<div class="card">
+		<div class="card-header">
+			<div class="card_tittle">
+				<div class='row'>
+					<div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Información del Estudiante</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-body">
+			<div class="col-md-12">
+				<form id="formInfoStudent" autocomplete="off">
+					<div class="row " id="InfoStudent" >					
+					</div>
+					<div class="row p-1">
+						<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Fecha y Lugar de Nacimiento</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-3 p-1 title labelDiv" id="label_date_nac"><span class="label label-default font-weight-bold">Fecha de Nacimiento</span></div>
+						<div class="col-md-1 p-1 title labelDiv" id="label_age"><span class="label label-default font-weight-bold">Edad</span></div>
+						<div class="col-md-2 p-1 title labelDiv" id="label_selectCountryNac"><span class="label label-default font-weight-bold">País</span></div>
+						<div class="col-md-2 p-1 title labelDiv" id="label_selectDeptoNac"><span class="label label-default font-weight-bold">Departamento</span></div>
+						<div class="col-md-2 p-1 title labelDiv" id="label_selectCityNac"><span class="label label-default font-weight-bold">Ciudad</span></div>
+						<div class="col-md-2 p-1 title labelDiv" id="label_selectNacionality"><span class="label label-default font-weight-bold">Nacionalidad</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-3 inputGroupContainer">
+							<div class="input-group"><input id="date_nac" class="form-control form-control-sm" value="" type="date"></div>
+						</div>
+						<div class="col-md-1 inputGroupContainer">
+							<div class="input-group"><input id="age" placeholder="Edad" class="form-control form-control-sm" value="" type="text" disabled="disabled"></div>
+						</div>
+						<div class="col-md-2 inputGroupContainer">
+							<div class="input-group" id="selectCountryNac"></div>
+						</div>
+						<div class="col-md-2 inputGroupContainer">
+							<div class="input-group" id="selectDeptoNac"></div>
+						</div>
+						<div class="col-md-2 inputGroupContainer">
+							<div class="input-group" id="selectCityNac"></div>
+						</div>
+						<div class="col-md-2 inputGroupContainer">
+							<div class="input-group" id="selectNacionality"></div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-12 title labelDiv" id="label_etnia"><span class="label label-default font-weight-bold">¿Pertenece a algún grupo étnico?</span></div>
+						
+					</div>
+					<div class="row p-1">
+						<div class="col-md-12 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health group_etnia' data-val='Si'><input class='form-control' type='radio' name='group_etnia'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health  group_etnia' data-val='No'><input class='form-control' type='radio' name='group_etnia'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-12 inputGroupContainer">
+							<div class="input-group" id="selectTypeEtnia"></div>
+						</div>
+					</div>
+
+					<hr class="style2">
+					<div class="row p-1">
+						<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Documento de Identidad</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-2 title labelDiv" id="label_selectTypeDoc"><span class="label label-default font-weight-bold">Tipo</span></div>
+						<div class="col-md-4 title labelDiv" id="label_number_doc"><span class="label label-default font-weight-bold">Número</span></div>
+						<div class="col-md-1 title d-none" id="label_ver_doc"><span class="label label-default font-weight-bold"></span></div>
+						<div class="col-md-6 title labelDiv" id="label_selectExp">
+							<div class="row">
+								<div class="col-md-12">
+									<span class="label label-default font-weight-bold">Lugar de Expedición</span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6" id="label_selectDeptoExp"><span class="" style="font-size: 10px">(Departamento)</span></div>
+								<div class="col-md-6" id="label_selectCityExp"><span class="" style="font-size: 10px">(Ciudad)</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-2 inputGroupContainer">
+							<div class="input-group" id="selectTypeDoc"></div>
+						</div>
+						<div class="col-md-4 inputGroupContainer" id="div_number_doc">
+							<div class="input-group"><input id="number_doc" placeholder="Número Documento" class="form-control form-control-sm" value="" type="text"></div>
+						</div>
+						<div class="col-md-1 inputGroupContainer d-none" id="div_ver_number_doc">
+							<div class="input-group" id="div_files"></div>
+						</div>
+						<div class="col-md-3 inputGroupContainer">
+							<div class="input-group" id="selectDeptoExp"></div>
+						</div>
+						<div class="col-md-3 inputGroupContainer">
+							<div class="input-group" id="selectCityExp"></div>
+						</div>
+					</div>
+<!-- 					<div class="row p-1 animated fadeInDown" id="label_doc_requisito">
+						<div class="col-md-12 inputGroupContainer d-flex labelDiv" id="label_div_action">
+							<div class="col col-12 card text-dark text-center " id="div_documento">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-xl-12">
+											<div class="updload-file border" id="update_doc">
+												<div class="form-group d-flex">
+													<input type="file" class="form-control form-control-file" id="doc_requisito" name="doc_requisito">
+													<button class="btn btn-outline-info btn-subir-archivo" type="button" id="btn_docrequisito" onclick="subir_archivo()" >Cargar</button>
+												</div>
+											</div>
+											<div class="wrapper_doc" style="display: none;">
+												<div class="progress progress_wrapper">
+													<div class="progress-bar progress-bar_stripped bg-info progress-bar-animated progress_bar_doc" id="progress" role="progressbar" style="width: 0%;">0%</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-12 py-1">
+											<div class="updload-file border" id="updload-file_doc">
+												<div class="form-group my-1 m-1">
+													<div class="wrapper_files_get_documento" id="div_file_doc">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> 
+					</div> -->
+					<div class="animated fadeInDown d-none" id="infoDocAdditional">						
+						<div class="row p-1">
+							<div class="col-md-4 title labelDiv d-none" id="label_number_visa"><span class="label label-default font-weight-bold">Número de Visa</span></div>
+							<div class="col-md-6 title labelDiv" id="label_date_visa_exp"><span class="label label-default font-weight-bold">Fecha de Expedición</span></div>
+							<div class="col-md-6 title labelDiv" id="label_date_visa_venc"><span class="label label-default font-weight-bold">Fecha de Vencimiento</span></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-md-4 inputGroupContainer d-none ">
+								<div class="input-group d-none "><input id="number_visa" placeholder="" class="form-control form-control-sm" value="" type="text" disabled="disabled"></div>
+							</div>
+							<div class="col-md-6 inputGroupContainer">
+								<div class="input-group"><input id="date_visa_exp" class="form-control form-control-sm" value="" type="date" disabled="disabled"></div>
+							</div>
+							<div class="col-md-6 inputGroupContainer">
+								<div class="input-group"><input id="date_visa_venc" class="form-control form-control-sm" value="" type="date" disabled="disabled"></div>
+							</div>
+						</div>
+					</div>
+					<hr class="style2">
+					<div class="row p-1">
+						<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Lugar de Residencia</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-6 title labelDiv" id="label_selectAddrHome"><span class="label label-default font-weight-bold">Dirección de Residencia</span></div>
+						<div class="col-md-3 title labelDiv" id="label_selectDeptoHome"><span class="label label-default font-weight-bold">Departamento</span></div>
+						<div class="col-md-3 title labelDiv" id="label_selectCityHome"><span class="label label-default font-weight-bold">Ciudad</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-6 inputGroupContainer">
+							<div class="row">	 
+								<div class="input-group col-md-4" id="selectAddrHome"></div><div class="input-group col-md-8"><input id="nuv" class="form-control form-control-sm" value="" type="text">&nbsp;<span class="label label-default font-weight-bold">&nbsp;#&nbsp;</span> <input id="pnu" class="form-control form-control-sm" value="" type="text"> <span class="label label-default font-weight-bold">&nbsp;-&nbsp;</span>&nbsp;<input id="snu" class="form-control form-control-sm" value="" type="text">&nbsp;<input id="iad" class="form-control form-control-sm" value="" type="text"></div>
+							</div>
+						</div>
+						<div class="col-md-3 inputGroupContainer">
+							<div class="input-group" id="selectDeptoHome"></div>
+						</div>
+						<div class="col-md-3 inputGroupContainer">
+							<div class="input-group" id="selectCityHome"></div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 title labelDiv" id="label_neighborhood"><span class="label label-default font-weight-bold">Barrio</span></div>
+						<div class="col-md-4 title labelDiv" id="label_phone_home"><span class="label label-default font-weight-bold">Teléfono Residencia</span></div>
+						<div class="col-md-4 title labelDiv" id="label_stratus"><span class="label label-default font-weight-bold">Estrato</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group"><input id="neighborhood" placeholder="Barrio" class="form-control form-control-sm" value="" type="text"></div>
+						</div>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group"><input id="phone_home" placeholder="Teléfono Residencia" class="form-control form-control-sm" value="" type="text"></div>
+						</div>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<select class='form-control novelty form-control-sm' id="stratus">
+									<option value='--' selected>--</option>
+									<option value='1'>1</option>
+									<option value='2'>2</option>
+									<option value='3'>3</option>
+									<option value='4'>4</option>
+									<option value='5'>5</option>
+									<option value='6'>6</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<hr class="style2">
+					<div class="row p-1">
+						<div class="col-md-2 title labelDiv" id="label_gender"><span class="label label-default font-weight-bold">Sexo</span></div>
+						<div class="col-md-2 title labelDiv" id="label_blood_type"><span class="label label-default font-weight-bold">Grupo Sanguineo</span></div>
+						<div class="col-md-2 title labelDiv" id="label_rh"><span class="label label-default font-weight-bold">RH</span></div>
+						<div class="col-md-3 title labelDiv" id="label_email_stu"><span class="label label-default font-weight-bold">Email Estudiante</span></div>
+						<div class="col-md-3 title labelDiv" id="label_phone_stu"><span class="label label-default font-weight-bold">Celular Estudiante</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-2 inputGroupContainer">
+							<div class="input-group">
+								<select class='form-control novelty form-control-sm gender' id="gender">
+									<option value='--' selected>--</option>
+									<option value='F'>Femenino</option>
+									<option value='M'>Masculino</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-2 inputGroupContainer">
+							<div class="input-group">
+								<select class='form-control novelty form-control-sm' id="blood_type">
+									<option value='--' selected>--</option>
+									<option value='A'>A</option>
+									<option value='B'>B</option>
+									<option value='AB'>AB</option>
+									<option value='O'>O</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-2 inputGroupContainer">
+							<div class="input-group">
+								<select class='form-control novelty form-control-sm stratus' id="rh">
+									<option value='' selected></option>
+									<option value='+'>+</option>
+									<option value='-'>-</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3 inputGroupContainer">
+							<div class="input-group"><input id="email_stu" placeholder="Email" class="form-control form-control-sm" value="" type="text"></div>
+						</div>
+						<div class="col-md-3 inputGroupContainer">
+							<div class="input-group"><input id="phone_stu" placeholder="Celular" class="form-control form-control-sm" value="" type="text"></div>
+						</div>
+					</div>
+					<hr class="style2">
+					<div class="row p-1">
+						<div class="col-md-12 title"><span class="label label-default font-weight-bold">Información Sobre la Salud del Estudiante</span></div>
+					</div>
+					<div class="row p-1">
+						<ul style="font-size:14px;">
+							<li><p class="text-justify"><strong>Nota 1: </strong>Según el Decreto 2200 del 2005 - Capítulo IV y la ley 911 del 2004 - Artículo 13, el Colegio no podrá suministrar ningún medicamento a los estudiantes. Solo podrán ser suministrados con fórmula médica en las enfermerías del colegio, recuerde hacer esta solicitud diligenciando el formato de “Autorización de Medicamentos” ubicado en el módulo de enfermería y enviar la formula medica con el estudiante. En caso de no contar con fórmula médica y sea un medicamento de venta libre deberá diligenciar el mismo formato.</p></li>
+							<li><p class="text-justify"><strong>Nota 2: </strong>En caso de que el estudiante sufra un accidente, lesión o enfermedad durante el año escolar y después de la Actualización de Datos, será necesario que el Padre de Familia lo informe de manera inmediata a través del módulo de comunicación con docentes y administrativo sección enfermería.</p></li>
+							<li><p class="text-justify"><strong>Nota 3: </strong>La persona que registra como acudiente en caso de emergencia, será contactada por el Colegio cuando no sea posible la comunicación con los padres.</p></li>
+						</ul>
+					</div>
+					<hr class="style2">
+					<div class="row p-1">
+						<div class="col-md-6 title labelDiv" id="label_eps"><span class="label label-default font-weight-bold">EPS</span></div>
+						<!-- <div class="col-md-4 title labelDiv" id="label_ips"><span class="label label-default font-weight-bold">IPS</span></div> -->
+						<div class="col-md-6 title labelDiv" id="label_prepaid_medicine"><span class="label label-default font-weight-bold">Medicina Prepagada</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-6 inputGroupContainer">
+							<div class="input-group"><textarea class="form-control" id="eps" rows="1"></textarea></div>
+						</div>
+						<!-- <div class="col-md-4 inputGroupContainer">
+							<div class="input-group"><textarea class="form-control" id="ips" rows="1"></textarea></div>
+						</div> -->
+						<div class="col-md-6 inputGroupContainer">
+							<div class="input-group"><textarea class="form-control" id="prepaid_medicine" rows="1"></textarea></div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 title labelDiv" id="label_scheme"><span class="label label-default font-weight-bold">Esquema de Vacunación (Actualizar)</span></div>
+						<div class="col-md-4 title labelDiv" id="label_vaccine_covid"><span class="label label-default font-weight-bold">Vacuna Covid - 19</span></div>
+						<div class="col-md-4 title labelDiv" id="label_vaccine_vph"><span class="label label-default font-weight-bold">Vacuna VPH</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<select class='form-control novelty form-control-sm' id="scheme">
+									<option value='--' selected>--</option>
+									<option value='De 0 a 3 años'>De 0 a 3 años</option>
+									<option value='De 3 a 5 años'>De 3 a 5 años</option>
+									<option value='Esquema completo'>Esquema completo</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health vaccine_covid' data-val='Si'><input class='form-control' type='radio' name='vaccine_covid'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health vaccine_covid' data-val='No'><input class='form-control' type='radio' name='vaccine_covid'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+						</div>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health vaccine_vph' data-val='Si'><input class='form-control' type='radio' name='vaccine_vph'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health vaccine_vph' data-val='No'><input class='form-control' type='radio' name='vaccine_vph'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 title labelDiv" id="label_major_disease"><span class="label label-default font-weight-bold">¿Presenta algúna enfermedad actualmente?</span></div>
+						<div class="col-md-4 title labelDiv" id="label_disturbance"><span class="label label-default font-weight-bold">Le han diagnosticado algúna alteración auditiva y/o visual?</span></div>
+						<div class="col-md-4 title labelDiv" id="label_musculoskeletal_injuries"><span class="label label-default font-weight-bold">Antecedentes Quirurgicos recientemente</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health major_disease' data-val='Si'><input class='form-control' type='radio' name='major_disease'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health major_disease' data-val='No'><input class='form-control' type='radio' name='major_disease'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+							<div class="animated fadeInDown d-none" id="div_major_disease">
+								<div class="input-group p-2">
+									<textarea class="form-control" id="reason_major_disease" placeholder="¿Cúal?" rows="2"></textarea>
+								</div>
+								<div class="input-group p-2">
+									<textarea class="form-control" id="dose_major_disease" placeholder="Tratamiento" rows="2"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health disturbance' data-val='Si'><input class='form-control' type='radio' name='disturbance'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health disturbance' data-val='No'><input class='form-control' type='radio' name='disturbance'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+							<div class="input-group p-2 animated fadeInDown d-none" id="div_disturbance"><textarea class="form-control" id="reason_disturbance" placeholder="¿Cúal?" rows="2"></textarea></div>
+						</div>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health musculoskeletal_injuries' data-val='Si'><input class='form-control' type='radio' name='musculoskeletal_injuries'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health musculoskeletal_injuries' data-val='No'><input class='form-control' type='radio' name='musculoskeletal_injuries'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+							<div class="input-group p-2 animated fadeInDown d-none" id="div_musculoskeletal_injuries">
+								<textarea class="form-control" id="reason_musculoskeletal_injuries" placeholder="¿Cuales?" rows="2"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 title labelDiv" id="label_surgical_history"><span class="label label-default font-weight-bold">¿Ha sufrido lesiones osteomusculares como fracturas o esguinces que el colegio deba conocer?</span></div>
+						<div class="col-md-4 title labelDiv" id="label_permanent_medication"><span class="label label-default font-weight-bold">¿Requiere algún medicamento de forma permanente?</span></div>
+						<div class="col-md-4 title labelDiv" id="label_medical_condition"><span class="label label-default font-weight-bold">¿Tiene antecedentes médicos de importancia?</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health surgical_history' data-val='Si'><input class='form-control' type='radio' name='surgical_history'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health surgical_history' data-val='No'><input class='form-control' type='radio' name='surgical_history'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+							<div class="input-group p-2 animated fadeInDown d-none" id="div_surgical_history"><textarea class="form-control" id="reason_surgical_history" placeholder="¿Cuales?" rows="2"></textarea></div>
+						</div>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health permanent_medication' data-val='Si'><input class='form-control' type='radio' name='permanent_medication'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health permanent_medication' data-val='No'><input class='form-control' type='radio' name='permanent_medication'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+							<div class="animated fadeInDown d-none" id="div_permanent_medication">
+								<div class="input-group p-2">
+									<textarea class="form-control" id="name_permanent_medication" placeholder="Nombre" rows="2"></textarea>
+								</div>
+								<div class="input-group p-2">
+									<textarea class="form-control" id="dose_permanent_medication" placeholder="Dosis" rows="2"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health medical_condition' data-val='Si'><input class='form-control' type='radio' name='medical_condition'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health medical_condition' data-val='No'><input class='form-control' type='radio' name='medical_condition'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+							<div class="animated fadeInDown d-none" id="div_medical_condition">
+								<div class="input-group p-2">
+									<textarea class="form-control" id="which_medical_condition" placeholder="¿Cual?" rows="2"></textarea>
+								</div>
+								<div class="input-group p-2">
+									<textarea class="form-control" id="treatment_medical_condition" placeholder="Tratamiento" rows="2"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 title labelDiv" id="label_convulsion"><span class="label label-default font-weight-bold">¿Ha tenido algún episodio de convulsión?</span></div>
+						<div class="col-md-8 title labelDiv" id="label_Alergia"><span class="label label-default font-weight-bold">¿Actualmente presenta algúna alergia?</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health convulsion' data-val='Si'><input class='form-control' type='radio' name='convulsion'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health convulsion' data-val='No'><input class='form-control' type='radio' name='convulsion'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+							<div class="row p-1 animated fadeInDown d-none" id="div_convulsion">
+								<div class="inputGroupContainer">
+									<div class="input-group p-2">
+										<textarea class="form-control" id="reason_convulsion" placeholder="¿Qué tipo de convulsión?" rows="2"></textarea>
+									</div>
+									<div class="input-group p-2">
+										<textarea class="form-control" id="quantity_convulsion" placeholder="¿Cuántas veces?" rows="1"></textarea>
+									</div>
+								</div>
+								<div class="inputGroupContainer">
+									<div class="row p-1">
+										<div class="col-md-12 labelDiv" id="label_convulsion_medication">¿Requiere medicamento?</div>
+									</div>
+									<div class="btn-group" data-toggle="buttons">
+										<label class='btn btn-outline-success btn-sm btn_health convulsion_medication' data-val='Si'><input class='form-control' type='radio' name='convulsion_medication'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+										<label class='btn btn-outline-danger btn-sm btn_health convulsion_medication' data-val='No'><input class='form-control' type='radio' name='convulsion_medication'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+									</div>
+									<div class="input-group p-2 animated fadeInDown d-none" id="div_convulsion_medication">
+										<textarea class="form-control" id="reason_convulsion_medication" placeholder="¿Cual?" rows="2"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8 inputGroupContainer">
+							<div class="row p-1">
+								<div class=" inputGroupContainer">
+									<div class="btn-group" data-toggle="buttons">
+										<label class='btn btn-outline-success btn-sm btn_health Alergia' data-val='Si'><input class='form-control' type='radio' name='Alergia'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+										<label class='btn btn-outline-danger btn-sm btn_health Alergia' data-val='No'><input class='form-control' type='radio' name='Alergia'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+									</div>
+								</div>
+							</div>
+							<div class="d-none row p-1 animated fadeInDown " id="div_Alergia">
+								<div class="row p-1">
+									<div class="col-md-6 labelDiv" id="label_allergy_alimento"><span class="label label-default font-weight-bold">¿Es alergico a algún alimento?</span></div>
+									<div class="col-md-6 inputGroupContainer">
+										<div class="btn-group" data-toggle="buttons">
+											<label class='btn btn-outline-success btn-sm btn_health allergy_alimento' data-val='Si'><input class='form-control' type='radio' name='allergy_alimento'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+											<label class='btn btn-outline-danger btn-sm btn_health allergy_alimento' data-val='No'><input class='form-control' type='radio' name='allergy_alimento'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+										</div>
+										<div class="input-group p-2 animated fadeInDown d-none" id="div_allergy_alimento">
+											<textarea class="form-control" id="reason_allergy_alimento" placeholder="¿Cúal?" rows="2"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row p-1">
+									<div class="col-md-6 labelDiv" id="label_allergy_medication"><span class="label label-default font-weight-bold">¿Es alergico algún medicamento?</span></div>
+									<div class="col-md-6 inputGroupContainer">
+										<div class="btn-group" data-toggle="buttons">
+											<label class='btn btn-outline-success btn-sm btn_health allergy_medication' data-val='Si'><input class='form-control' type='radio' name='allergy_medication'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+											<label class='btn btn-outline-danger btn-sm btn_health allergy_medication' data-val='No'><input class='form-control' type='radio' name='allergy_medication'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+										</div>
+										<div class="input-group p-2 animated fadeInDown d-none" id="div_allergy_medication">
+											<textarea class="form-control" id="reason_allergy_medication" placeholder="¿Cúal?" rows="2"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row p-1">
+									<div class="col-md-6 labelDiv" id="label_allergy"><span class="label label-default font-weight-bold">¿Presenta algúna alergia ambiental? (polvo, acaros, pasto y picaduras de insectos</span></div>
+									<div class="col-md-6 inputGroupContainer">
+										<div class="btn-group" data-toggle="buttons">
+											<label class='btn btn-outline-success btn-sm btn_health allergy' data-val='Si'><input class='form-control' type='radio' name='allergy'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+											<label class='btn btn-outline-danger btn-sm btn_health allergy' data-val='No'><input class='form-control' type='radio' name='allergy'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+										</div>
+										<div class="input-group p-2 animated fadeInDown d-none" id="div_allergy">
+											<textarea class="form-control" id="reason_allergy" placeholder="¿Cúal?" rows="2"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row p-1">
+						
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 col-lg-4 title labelDiv" id="label_psicriatia">
+							<span class="label label-default font-weight-bold">¿El estudiante está actualmente en tratamiento psiquiátrico o psicológico?</span>
+						</div>
+						<div class="col-md-4 col-lg-4 title labelDiv" id="label_poliza_seguro">
+							<span class="label label-default font-weight-bold">¿Desea adquirir la póliza de seguro?</span>
+						</div>
+						<div class="col-md-4 col-lg-4 title labelDiv" id="label_depto_bienestar">
+							<span class="label label-default font-weight-bold">Atención en el departamento de Bienestar. Autorizamos la prestación del servicio</span>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-4 col-lg-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health psicriatia' data-val='Si'><input class='form-control' type='radio' name='psicriatia'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health psicriatia' data-val='No'><input class='form-control' type='radio' name='psicriatia'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+						</div>
+						<div class="col-md-4 col-lg-4 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health poliza_seguro' data-val='Si'><input class='form-control' type='radio' name='poliza_seguro'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health poliza_seguro' data-val='No'><input class='form-control' type='radio' name='poliza_seguro'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+							<div class="p-2 animated fadeInDown d-none" id="div_poliza_seguro">
+								<div class="row">
+									<p class="text-justify" style="font-size:14px;"><strong>Nota </strong>Les recomendamos que el Seguro de Accidentes es voluntario, pero deben tener presente que los estudiantes que <b>no</b> lo tomen, no podrán salir del Colegio a las actividades artísticas y deportivas, show de talentos, natación, primeras comuniones, convivencia, visitas a universidades, etc.</p>
+								</div>
+								<div class="row ">
+									<textarea class="form-control" id="reason_poliza_seguro" placeholder="Motivo" rows="2"></textarea>
+								</div>	
+								
+								<hr class="hr">
+								<div class="row py-2 labelDiv" id="label_txtpoliza">
+									<h3 class="text-justify fadeInDown" style="font-size:14px;"><strong>Adjuntar soporte de EPS.</strong> </h3>
+								</div>
+								<div>
+									<div class="row"> 
+										<div class="col col-lg-12"> 
+											<div class="updload-file border" id="updload-poliza">
+												<div class="form-group my-2 m-2 d-flex"> 
+													<input type="file" class="form-control  form-control-file mt-2 " id="txtpoliza"  name="txtpoliza[]" required="">
+													<button class="btn  btn-subir-archivo mt-2 btn-info txtrequisitopoliza" type="button" id="btnpoliza" onclick="subir_archivoPoliza()">Cargar</button>
+												</div>      
+											</div>
+										</div>
+										<div class="col-12 pt-3 ml-3  wrapper_poliza" style="display: none;">
+											<div class="progress progress_wrapper" style="width: 90%;"> 
+												<div class="progress-bar progress-bar_stripped bg-info progress-bar-animated progress_barPoliz" id="progressPoliz" role="progressbar" style="width: 0%;">0%</div>
+											</div>
+										</div>
+									</div>                
+									<div class="col-xl-12 py-2">                    
+										<div class="updload-file border" id="updload-file4">                        
+											<div class="form-group my-2 m-2">                            
+												<div class="wrapper_files_poliza my-3 m-3" id="divprimreqPoliza">                            
+
+												</div>     
+												<div class="d-none"><input type="number" class="validadpoli" data-oblig="true" id="textvalid_poliza"></div>                   
+											</div>                     
+										</div>                
+									</div>
+								</div>	
+							</div>
+						</div>
+						<div class="col-md-4 col-lg-4 inputGroupContainer" inputGroupContainerid="label_deptoBienestar">
+							<div class="row ml-5 mr-5"><p class="text-center" style="font-size:14px;"> Le informamos que su hijo(a) podrá ser atendido por el departamento de psicología escolar en caso de que se requiera.</p></div>
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health depto_bienestar' data-val='1'><input class='form-control' type='radio' name='depto_bienestar'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health depto_bienestar' data-val='0'><input class='form-control' type='radio' name='depto_bienestar'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-6 title labelDiv" id="label_exploratory_valuation"><span class="label label-default font-weight-bold">¿Autoriza usted que su hijo(a) reciba atención y valoración en la enfermería del colegio en caso de presentarse una situación de salud durante la jornada escolar?</span></div>
+						<div class="col-md-6 title labelDiv" id="label_autorizaMedi"><span class="label label-default font-weight-bold">¿Autoriza el uso de medicamentos de venta libre como Dolex, linimento deportivo, hematix, noraver, mieltertos, gotas lubricantes oftálmicas, procicar, vaselina, acetato de aluminio, bloqueador solar, caladryl, para el manejo de alteraciones de salud presentadas en el colegio como golpes, lesiones musculares, fiebre, picaduras, entre otras?</span></div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-6 inputGroupContainer">
+							<div class="row ml-5 mr-5">
+								<p class="text-justify" style="font-size:14px;"><strong>Nota : </strong>Recuerde que en la enfermería se brinda un primer auxilio y en caso de ser necesario el estudiante será remitido al centro médico que corresponda <b>(En ningún caso desde enfermería se dará un diagnóstico sobre el estado de salud).</b></b></p>
+							</div>
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health exploratory_valuation' data-val='Si'><input class='form-control' type='radio' name='exploratory_valuation'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health exploratory_valuation' data-val='No'><input class='form-control' type='radio' name='exploratory_valuation'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+						</div>
+						<div class="col-md-6 inputGroupContainer">
+							<div class="btn-group" data-toggle="buttons">
+								<label class='btn btn-outline-success btn-sm btn_health autorizaMedi ' data-val='Si'><input class='form-control' type='radio' name='autorizaMedi'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+								<label class='btn btn-outline-danger btn-sm btn_health autorizaMedi' data-val='No'><input class='form-control' type='radio' name='autorizaMedi'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+							</div>
+						</div>
+					</div>
+					<div class="row p-1">
+						<div class="col-md-12 inputGroupContainer">
+							<span id="errorMessage" class="animated infinite flash"></span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

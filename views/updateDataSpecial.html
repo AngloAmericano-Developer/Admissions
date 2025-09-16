@@ -1,0 +1,115 @@
+<div class='row p-3 d-flex justify-content-center' id='cardInfo'>
+  <div class="w-50 card shadow-card">
+    <div class="card-header">
+      <div class="card_tittle">
+        <div class='row'>
+          <div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Información personal</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" >
+      <div class="bodyCard">
+        <div class="row">
+          <div class="col-sm-4 col-md-4 col-xl-4 w-100">
+            <img id="image" class="rounded mx-auto d-block w-50" alt="usuario sin foto">
+          </div>
+          <div class="col-sm-8 col-md-8 col-xl-8">
+            <div class="row">
+              <div class="w-100">
+                <label><strong>Nombre: </strong></label>
+                <label id="name_card"></label>
+              </div>
+              <div class="w-100" id="dis">
+                <label><strong>Curso: </strong></label>
+                <label id="course"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="card-block border border-light p-1">
+  <div class="row p-2">
+    <div class="col-md-12 mx-auto">
+      <div class="row text-center p-2">
+        <div class="col-md-12 title">
+          <label class="text-center"><span class="label label-default font-weight-bold">Información Personal...</span></label>
+        </div>
+      </div>
+      <div class="row text-center p-3 bgColorInter">
+        <div class="col-md-3">
+          <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Apellidos</span></label>
+          <div class="input-group"><input id="last_name" placeholder="Apellido" class="form-control form-control-sm" value="" type="text"></div>
+        </div>
+        <div class="col-md-3">
+          <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Nombres</span></label>
+          <div class="input-group"><input id="name" placeholder="Nombres" class="form-control form-control-sm" value="" type="text"></div>
+        </div>
+        <div class="col-md-2">
+          <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Fecha de Nacimiento</span></label>
+          <div class="input-group"><input id="date_birth" class="form-control form-control-sm" value="" type="date"></div>
+        </div>
+        <div class="col-md-1">
+          <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Edad</span></label>
+          <div class="input-group"><input id="age" placeholder="Edad" class="form-control form-control-sm" value="" type="text" disabled="disabled"></div>
+        </div>
+        <div class="col-md-3">
+          <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Email del Estudiante</span></label>
+          <div class="input-group"><input id="email" placeholder="Email del Estudiante" class="form-control form-control-sm" value="" type="text"></div>
+        </div>
+      </div>
+      <div class="row text-center p-3">
+        <div class="col-md-2">
+          <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Tipo de Documento</span></label>
+          <div class="input-group" id="selectTypeDoc"></div>
+        </div>
+        <div class="col-md-2">
+          <label class="text-center labelDiv"><span class="label label-default font-weight-bold">N° de Documento</span></label>
+          <div class="input-group"><input id="number_doc" placeholder="# Documento" class="form-control form-control-sm" value="" type="text"></div>
+        </div>
+        <div class="col-md-4">
+          <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Lugar de Expedición</span></label>
+          <div class="input-group" id="selectDeptoExp"></div>
+        </div>
+        <div class="col-md-4">
+          <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Ciudad de Expedición</span></label>
+          <div class="input-group" id="selectCityExp"></div>
+        </div>
+      </div>
+      <div class="animated fadeInDown d-none" id="infoDocAdditional">
+        <div class="row text-center p-3">
+          <div class="col-md-4">
+            <label class="text-center labelDiv"><span class="label label-default font-weight-bold">--------</span></label>
+            <div class="input-group"><input id="number_visa" placeholder="" class="form-control form-control-sm" value="" type="text" disabled="disabled"></div>
+          </div>
+          <div class="col-md-4">
+            <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Fecha de Expedición</span></label>
+            <div class="input-group"><input id="date_visa_exp" class="form-control form-control-sm" value="" type="date" disabled="disabled"></div>
+          </div>
+          <div class="col-md-4">
+            <label class="text-center labelDiv"><span class="label label-default font-weight-bold">Fecha de Vencimiento</span></label>
+            <div class="input-group"><input id="date_visa_venc" class="form-control form-control-sm" value="" type="date" disabled="disabled"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container p-2">
+  <div class="card-block">
+    <div class="row text-center">
+      <div class="col-md-4 inputGroupContainer">
+
+      </div>
+      <div class="col-md-4 inputGroupContainer">
+        <button type="button" id="saveData" class="btn btn-primary btn-md btn-block">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+      </div>
+      <div class="col-md-4 inputGroupContainer">
+
+      </div>
+    </div>
+  </div>
+</div>

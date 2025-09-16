@@ -1,0 +1,54 @@
+<div class="row p-3">
+  <div class="card">
+    <div class="card-header">
+      <div class="card_tittle">
+        <div class='row'>
+          <div class="col-sm-12 col-md-12 col-xl-12 text-center tittleIcon h6 text-dark" >Bienvenidos</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row p-1">
+        <div class="col-md-12 text-center">  
+          <p class="text-justify">Respetados Padres de Familia:</p>
+          <p class="text-justify">¿Desea tomar el servicio de Seguimiento Satelital de Ruta (Bus Escool)?</strong></p>
+          <div class="btn-group text-center" data-toggle="buttons">
+            <label class='btn btn-outline-success btn-sm btn_service bus_escool' data-val='Si'><input class='form-control' type='radio' name='bus_escool'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+            <label class='btn btn-outline-danger btn-sm btn_service bus_escool' data-val='No'><input class='form-control' type='radio' name='bus_escool'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+          </div>
+          <br><br>
+          <div class="row p-1">
+            <div class="col-md-12 title labelDiv modalDiv" id="label_authPersonal"><span class="label label-default font-weight-bold">Autorizamos a nuestro(a) hijo(a) para que pueda bajarse solo(a) de la ruta escolar</span></div>
+          </div>
+
+          <div class="row p-1 text-center">
+            <div class="col-md-12 inputGroupContainer">
+              <div class="btn-group" data-toggle="buttons">
+                <label class='btn btn-outline-success btn-sm btnTransport authPersonal' data-val='Si'><input class='form-control' type='radio' name='authPersonal'>Si <i class="fa fa-check" aria-hidden="true"></i></label>
+                <label class='btn btn-outline-danger btn-sm btnTransport authPersonal' data-val='No'><input class='form-control' type='radio' name='authPersonal'>No <i class="fa fa-times" aria-hidden="true"></i></label>
+              </div>
+            </div>
+          </div>
+          <div class="animated fadeInDown d-none" id="div_authPersonal">
+            <div class="row p-1">
+              <div class="col-md-6 title labelDiv modalDiv" id="label_authName"><span class="label label-default font-weight-bold">Persona autorizada para recoger al Estudiante</span></div>
+              <div class="col-md-3 title labelDiv modalDiv" id="label_authDoc"><span class="label label-default font-weight-bold">Número de Documento</span></div>
+              <div class="col-md-3 title labelDiv modalDiv" id="label_authMobile"><span class="label label-default font-weight-bold">N° de Celular</span></div>
+            </div>
+            <div class="row p-1">
+              <div class="col-md-6 inputGroupContainer">
+                <div class="input-group"><input id="authName_2" placeholder="Nombre Completo" class="form-control form-control-sm" value="" type="text"></div>
+              </div>
+              <div class="col-md-3 inputGroupContainer">
+                <div class="input-group"><input id="authDoc_2" placeholder="N° de Documento" class="form-control form-control-sm" value="" type="text"></div>
+              </div>
+              <div class="col-md-3 inputGroupContainer">
+                <div class="input-group"><input id="authMobile" placeholder="Celular" class="form-control form-control-sm" value="" type="text"></div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
