@@ -4534,13 +4534,12 @@ function getemailentryform($base, $consecutivo) {
 			$link = conectar_db($base);
 			$result = array();
 			$id = $_SESSION["id"];
-			$procedure = "SELECT * FROM `mat_firma` where idStudent = $id and estado = 1"; 
+			$procedure = "SELECT * FROM `firma` WHERE `id` = $id AND `estado` = 1 ORDER BY `firma`.`tipo_deudor` ASC"; 
 			$query = mysql_query($procedure,$link);
 			if(mysql_num_rows($query)>0){
 				while($data = mysql_fetch_assoc($query)){
-					$consult2= consultaEstado($base); 
 					/* $consult = array('idProgrese'=>['idProgrese'],'idprocessId'=>['idprocessId'],'estado'=>['estado']);  */
-					array_push($result,array('massiveProcessingId'=> $data["massiveProcessingId"], 'date' => $data['Date'],'status' => $consult2['status'],'files2' => $consult2['files']));
+					array_push($result,array('id'=> $data["id"], 'tipo_deudor' => $data['tipo_deudor'],'signature_id' => $data['signature_id'],'signatory_id' => $data['signatory_id']));
 				}
 			}
 			return $result;
@@ -4626,105 +4625,6 @@ function getemailentryform($base, $consecutivo) {
 			return array('code'=>500,'response'=>$error);
 		}
 	} 
-
-
-
-	
-	function consultaEstado($base) {
-		try{
-			$link = conectar_db($base);
-			$id = $_SESSION["id"];
-			$procedure = "SELECT * FROM `mat_firma` where idStudent = $id"; 
-			$query = mysql_query($procedure,$link);
-			if(mysql_num_rows($query)>0){
-				$mesagge = mysql_fetch_assoc($query);
-				$processId = $mesagge["processId"];
-				//////////////////////////////////////////////////////////
-						// Datos de autenticación
-				$auth_url = 'https://authorizer.autenticsign.com/v2/authorizer/getToken';
-				$client_id = 'ccHKe0wd8XBaq3eZbJVVqiVikHPZC0df';
-				$client_secret = 'QYEQR6XFhv5d2Hvr2mRfjHQ8PV85h1Z1zeNu9Vr7Er1xX72LmxGxXVhq39Zb4Nqu';
-				$audience = 'mpl.autenticsign.com';
-			
-				// Configura los datos para la solicitud del token
-				$data = [
-					'audience' => $audience,
-					'grant_type' => 'client_credentials',
-					'client_id' => $client_id,
-					'client_secret' => $client_secret,
-				];
-			
-				// Configura la solicitud de CURL para obtener el token
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, $auth_url);
-				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-				$response = curl_exec($ch);
-				curl_close($ch);
-			
-				// Decodifica la respuesta JSON para obtener el token
-				$responseData = json_decode($response, true);
-
-				$access_token = $responseData['access_token'];
-				
-				// URL del proceso de firma
-				$status_url = "https://mpl.autenticsign.com/v3/signing-process/get-files/$processId";
-				
-				
-				// Configura la solicitud de CURL para consultar el estado del proceso
-				$ch = curl_init($status_url);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer $access_token"]);
-				$status_response = curl_exec($ch);
-			
-				// Verifica si hubo un error en la solicitud CURL
-				
-				curl_close($ch);
-
-				$status_data = json_decode($status_response, true);
-				if (isset($status_data['body']['files'])) {
- 					$urls = [];
-					foreach ($status_data['body']['files'] as $file) {
-						$urls[] = [
-							'name' => $file['name'],
-							'url' => $file['url'],
-							'status' => $file['status']
-						];
-					}
-					// Asignar cada archivo a un grupo específico
-					$group1 = $urls[0]['url'];
-					$group2 = $urls[1]['url'];
-					$group3 = $urls[2]['url'];
-					$group4 = $urls[3]['url'];
-					$status =$urls[0]['status'];
-
-					$procedure = "INSERT INTO `mat_estado_firma`(`n`, `idStudent`, `processId`, `group1`, `group2`, `group3`, `group4`, `status`, `date`) 
-									VALUES (null,'$id','$processId','$group1','$group2','$group3','$group4','$status',NOW())
-									ON DUPLICATE KEY UPDATE `group1` = '$group1',  `group2` ='$group1' , `group3` = '$group3', `group4` = '$group4', `status` = '$status', `date` = NOW()"; 
-					$query = mysql_query($procedure,$link);
-					//return ['processId' => $processId, 'files' => $urls];
-					if(mysql_affected_rows()>0){
-						return ['status' => $status, 'files' => $status_data['body']['files'][0]['name']];
-					}
-					else {
-						return [ 'files' => "no insterto"];
-					} 
-					return ['processId' => $processId, 'files' => $status_data['body']['files'][0]['name']];
-				}else {
-					return ['processId' => $processId, 'files' => $processId];
-				}
-				//////////////////////////////////////////////////////////
-			}else{
-				return ['processId' => $processId, 'files' => $processId];
-			}
-		}catch (Exception $e) {
-			$error = $e->getMessage();
-			return array('code'=>500,'response'=>$error);
-		}
-	}
-
 	
 
     function serviceBusScool($base){
@@ -4799,6 +4699,99 @@ function getemailentryform($base, $consecutivo) {
          	return array('code'=>500,'response'=>$error);
      	}
 	}	
+
+	function getStateSignature($base,$signature_id){
+		try {
+			$id = $_SESSION["id"];
+			$result = array();
+			$url = "https://api.lleida.net/cs/v1/get_signatory_status";
+			$data = [
+				"request" => "GET_SIGNATORY_STATUS",
+				"user" => "angloamericano@co",
+				"request_id" => "$id"."01",
+				"signatory_id" => $signature_id
+			];
+			
+			$ch = curl_init($url); 
+			// Configurar opciones
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, [
+				"Accept: application/json",
+				"Content-Type: application/json; charset=utf-8",
+				"Authorization: x-api-key idXqi7NXmPoQidzDrKh5LTLb2UTaLTM2"
+			]);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data, JSON_UNESCAPED_UNICODE));
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+			// Ejecutar la petición
+      		$response = curl_exec($ch);
+
+			if (curl_errno($ch)) {
+          		echo "Error en cURL: " . curl_error($ch);
+      		} else {
+				// Decodificar JSON de respuesta
+				$decoded = json_decode($response, true, 512, JSON_BIGINT_AS_STRING);
+				$signatory_status = $decoded['signatory_status'];
+				$signatory_status_date = $decoded['signatory_status_date'];
+				array_push($result, array("status" => $signatory_status, "dates" => $signatory_status_date));
+				return ($result);
+			}
+			//return response($result);
+			//return array('code'=>500,'response'=>"error");
+
+		} catch (\Throwable $th) {
+			//throw $th;
+		}
+	}
+
+	function getSignatureDocuments($base,$signature_id,$signatory_id){
+		try {
+			$id = $_SESSION["id"];
+			$result = array();
+			$url = "https://api.lleida.net/cs/v1/get_document";
+			$data = [
+				"request" => "get_document",
+				"user" => "angloamericano@co",
+				"signature_id" => "17582056990400000",
+				"signatory_id" => "17582056990400000",
+				"file_group" => "signatory_evidence"
+			];
+			
+			$ch = curl_init($url); 
+			// Configurar opciones
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, [
+				"Accept: application/json",
+				"Content-Type: application/json; charset=utf-8",
+				"Authorization: x-api-key idXqi7NXmPoQidzDrKh5LTLb2UTaLTM2"
+			]);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data, JSON_UNESCAPED_UNICODE));
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+			// Ejecutar la petición
+      		$response = curl_exec($ch);
+
+			if (curl_errno($ch)) {
+          		echo "Error en cURL: " . curl_error($ch);
+      		} else {
+				// Decodificar JSON de respuesta
+				$decoded = json_decode($response, true, 512, JSON_BIGINT_AS_STRING);
+
+
+				$datainfo = $decoded['document'];
+				$fileArray = $decoded['document']['file'];
+				$file = isset($fileArray[0]) ? $fileArray[0] : null;
+				$content = isset($file['content']) ? $file['content'] : null;
+				array_push($result, array("file" => $file, "content" => $content, "datainfo" => $datainfo));
+				return response($result);
+			}
+			//return response($result);
+			//return array('code'=>500,'response'=>"error");
+
+		} catch (\Throwable $th) {
+			//throw $th;
+		}
+	}
 
 ?>
 

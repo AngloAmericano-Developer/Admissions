@@ -1,30 +1,358 @@
-function viewElectronicSignature (){
-	$("#content").load("views/viewElectronicSignature.html?v=4.1",function(){
-		console.log("ingreso")
-		getFirma = getElectronicSignature()
-		$.when(getFirma).done(responsfimra =>{
-			console.log(responsfimra);
-			//ingreso si realizó la firma
-			if(responsfimra['length'] >= 1){
-				let dia = responsfimra[0]['date'].split(' ');
-				//ingreso si no ha realizado el proceso de firma
-				let status = (responsfimra[0]['status'] =='Sin firmas')?'Sin diligenciar deudor y codeudor':(responsfimra[0]['status'] =='Esperando Otras Firmas')?'Pendiente por firma de deudor o codeudor':'Documentos firmados'
-				$("#bodyElectronic").append('<p>Comenzó el proceso de firma el día '+dia[0]+' a las '+dia[1]+'. El estado se encuentra. <b>'+status+'</b> </p>')
-			}else{
-				$("#bodyElectronic").append('<button class="btn btn-primary" id="buttonElectronic" onclick=\"openModal()\" >Firma Electrónica</button>');
-			}
-
-			
-		}).fail(responsfimra =>{
-			console.log(responsfimra);
-		})
-	});
+async function viewElectronicSignature (){
+	responsfirma = await getElectronicSignature();
+	if(responsfirma['length'] >= 1){
+		viewStateSignature(responsfirma);
+	}else{
+		viewEstadofirma();
+	}
 };
 
 
-function  validarButton(){
-	$("#buttonElectronic").setAttribute('disabled');
+function viewEstadofirma(){
+   	$("#content").load("views/viewElectronicSignature.html?v=4.1",function(){
+		$("#bodyElectronic").append('<button class="btn btn-primary" id="buttonElectronic" onclick=\"openModal()\" >Firma Electrónica</button>');
+	});
 }
+
+function viewStateSignature(responsfirma){
+	$("#content").load("views/viewStateSignature.html?v=4.1", function(){
+		viewSignarure(responsfirma);
+	})
+}
+
+async function viewSignarure(responsfirma){
+	 try {
+		// Trae el estado de la firma actualizada de Lleida
+		var data = await dataSignature(responsfirma);
+		console.log(data);
+		//Trae estilos
+		if (!document.getElementById('estilos-dinamicos')) {
+			let link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.href = 'css/signature.css?v=4.1';
+			link.id = 'estilos-dinamicos';
+			document.head.appendChild(link);
+		}
+		// Cargar información del estudiante y deudor
+		viewStudentData();
+		viewDeudorData();
+		updateCurrentDate();
+
+		// Actualizar interfaz con los datos obtenidos
+		updateProcess(data);
+		updateHistoryDeptor(data);
+		updateSpanDeptor(data);
+		
+		//addAnimations();
+		
+        // Actualizar fecha cada 20 segundos
+		setInterval(updateCurrentDate, 20000);
+			
+            
+		// Simular actualizaciones cada 0 segundos
+		setInterval( simulateStatusUpdates, 10000);
+
+        // Funcionalidad de botones
+		$(".viewdocumentbtn").off('click').on('click', function(e)  { datagetSignatureDocuments(e, responsfirma)});
+
+	} catch (error) {
+		console.error("Error al obtener datos del estudiante:", error);
+	} finally {
+		$("#loader_").addClass('d-none');
+	}
+}
+
+async function datagetSignatureDocuments(e,dataSignature) {
+    try {
+		if (e.target.closest('.btn-primary-custom')) {
+			// Añadir efecto de loading
+			const btn = e.target.closest('.btn-primary-custom');
+			const originalText = btn.innerHTML;
+			btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Cargando...';
+			btn.disabled = true;
+
+			const data = await getSignatureDocuments(dataSignature[0].signature_id,dataSignature[0].signatory_id);
+			let content_ = data.response[0].content; // base64 (URL safe)
+
+			if (content_) {
+				// Convertir de Base64URL a Base64 estándar
+				const cleanBase64 = base64UrlToBase64(content_);
+
+				// Crear un Blob a partir del base64
+				const byteCharacters = atob(cleanBase64);
+				const byteNumbers = new Array(byteCharacters.length);
+				for (let i = 0; i < byteCharacters.length; i++) {
+					byteNumbers[i] = byteCharacters.charCodeAt(i);
+				}
+				const byteArray = new Uint8Array(byteNumbers);
+				const blob = new Blob([byteArray], { type: 'application/pdf' });
+
+				// Crear URL temporal y abrir en nueva pestaña
+				const blobUrl = URL.createObjectURL(blob);
+				window.open(blobUrl, '_blank');
+			} else {
+				alert('No se encontró el documento PDF.');
+			}
+
+			setTimeout(() => {
+				btn.innerHTML = originalText;
+				btn.disabled = false;
+			}, 2000);
+		}
+        
+    } catch (error) {
+        console.error("Error al obtener documentos de firma:", error);
+    }
+}
+
+// Helper para convertir Base64URL a Base64 estándar
+function base64UrlToBase64(base64Url) {
+    return base64Url
+        .replace(/-/g, '+')
+        .replace(/_/g, '/')
+        .padEnd(base64Url.length + (4 - base64Url.length % 4) % 4, '=');
+}
+
+
+async function viewDeudorData() {
+	try {
+		// Trae los datos del deudor
+		const debtorInfo = await getDebtorData();
+		$("#debtorName").text(debtorInfo['response'][0]['Names'] + ' ' + debtorInfo['response'][0]['Last_Name']);
+		$("#debtorDocument").text(debtorInfo['response'][0]['Type_doc'] + ' ' + debtorInfo['response'][0]['Num_Doc']);
+		$("#debtorEmail").text(debtorInfo['response'][0]['Email']);
+		$("#debtorPhone").text(debtorInfo['response'][0]['ext_cel'] + ' ' + debtorInfo['response'][0]['Mobile']);
+		
+		// Trae los datos del codeudor
+		const codebtorInfo = await getCodebtorData();
+		$("#coDebtorName").text(codebtorInfo['response'][0]['Names'] + ' ' + codebtorInfo['response'][0]['Last_Name']);
+		$("#coDebtorDocument").text(codebtorInfo['response'][0]['Type_doc'] + ' ' + codebtorInfo['response'][0]['Num_Doc']);
+		$("#coDebtorEmail").text(codebtorInfo['response'][0]['Email']);
+		$("#coDebtorPhone").text(codebtorInfo['response'][0]['ext_cel'] + ' ' + codebtorInfo['response'][0]['Mobile']);
+	} catch (error) {
+		console.error("Error al obtener datos del deudor:", error);
+	}		
+}
+
+async function viewStudentData() {
+	try {
+		const studentInfo = await userInfo();
+		const student = studentInfo['response'][0];
+		var templeteStudent = `
+                        <h4 class="mb-3"><i class="fas fa-user-graduate me-2"></i> Estudiante</h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="info-item">
+                                    <span class="info-label">Nombre:</span>
+                                    <span class="info-value">${student.NOMBRE}</span>
+                                </div>
+                               <div class="info-item">
+                                    <span class="info-label">Grado:</span>
+                                    <span class="info-value">${student.CURSO}</span>
+                                </div>
+                            </div>
+							
+                        </div>`
+	$("#studentInfo").html(templeteStudent);
+	} catch (error) {
+		console.error("Error al obtener datos del estudiante:", error);
+	}
+}
+
+async function updateHistoryDeptor(statusUpdates) {
+	try {
+		const items = [];
+
+		// Deudor
+		if (statusUpdates.deudor.status === 'signed') {
+			items.push(`
+				<div class="timeline-item">
+					<div class="timeline-icon bg-success text-white">
+						<i class="fas fa-check"></i>
+					</div>
+					<div class="timeline-content">
+						<small class="fw-bold">Deudor firmó</small><br>
+						<small class="text-muted">${statusUpdates.deudor.date || ''}</small>
+					</div>
+				</div>
+			`);
+		} else {
+			items.push(`
+				<div class="timeline-item">
+					<div class="timeline-icon bg-warning text-white animate-pulse">
+						<i class="fas fa-clock"></i>
+					</div>
+					<div class="timeline-content">
+						<small class="fw-bold">Pendiente Deudor</small><br>
+						<small class="text-muted">${statusUpdates.deudor.date || 'Enviado hoy'}</small>
+					</div>
+				</div>
+			`);
+		}
+
+		// Codeudor
+		if (statusUpdates.codeudor.status === 'signed') {
+			items.push(`
+				<div class="timeline-item">
+					<div class="timeline-icon bg-success text-white">
+						<i class="fas fa-check"></i>
+					</div>
+					<div class="timeline-content">
+						<small class="fw-bold">Codeudor firmó</small><br>
+						<small class="text-muted">${statusUpdates.codeudor.date || ''}</small>
+					</div>
+				</div>
+			`);
+		} else {
+			items.push(`
+				<div class="timeline-item">
+					<div class="timeline-icon bg-warning text-white animate-pulse">
+						<i class="fas fa-clock"></i>
+					</div>
+					<div class="timeline-content">
+						<small class="fw-bold">Pendiente Codeudor</small><br>
+						<small class="text-muted">${statusUpdates.codeudor.date || 'Enviado hoy'}</small>
+					</div>
+				</div>
+			`);
+		}
+		const timelineHtml = `
+			<div class="timeline">
+				<h6 class="mb-3">Historial Reciente</h6>
+				${items.join('')}
+			</div>
+		`;
+		$("#resourcesInfo").html(timelineHtml);
+	} catch (error) {
+		console.error("Error al obtener datos de deudores:", error);
+	}
+}
+
+async function updateSpanDeptor(status) {
+    try {
+        // Deudor
+        let debtorHtml = (status.deudor.status === 'signed')
+            ? `<span class="status-badge status-signed"><i class="fas fa-check-circle"></i>Firmado</span>`
+            : `<span class="status-badge status-pending"><i class="fas fa-clock"></i>Pendiente</span>`;
+        $(".status-signed-debtor").html(debtorHtml);
+
+		let dateHtml = (status.deudor.date && status.deudor.status === 'signed')
+			? `<span class="info-label">Fecha de Firma:</span><span class="info-value">${status.deudor.date}</span>`
+			: `<span class="info-label">Enviado:</span><span class="info-value">Enviado hoy</span>`;
+		$(".info-item.signed-debtor").html(dateHtml);
+
+        // Codeudor
+        let coDebtorHtml = (status.codeudor.status === 'signed')
+            ? `<span class="status-badge status-signed"><i class="fas fa-check-circle"></i>Firmado</span>`
+            : `<span class="status-badge status-pending"><i class="fas fa-clock"></i>Pendiente</span>`;
+        $(".status-signed-coDebtor").html(coDebtorHtml);
+
+		let dateHtmlCo = (status.codeudor.date && status.codeudor.status === 'signed')
+			? `<span class="info-label">Fecha de Firma:</span><span class="info-value">${status.codeudor.date}</span>`
+			: `<span class="info-label">Enviado:</span><span class="info-value">Enviado hoy</span>`;
+		$(".info-item.signed-coDebtor").html(dateHtmlCo);
+    } catch (error) {
+        console.error("Error al obtener estado de la firma:", error);
+    }
+}
+
+// Actualizar fecha actual
+function updateCurrentDate() {
+	const now = new Date();
+	const options = { 
+		weekday: 'long', 
+		year: 'numeric', 
+		month: 'long', 
+		day: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit'
+	};
+	document.getElementById('currentDate').textContent = now.toLocaleDateString('es-ES', options);
+}
+
+async function dataSignature(responsfirma) {
+	const states = await Promise.all(responsfirma.map(item => getStateSignature(item.signatory_id)));
+	const unixTimestamp = 1535440000; // Ejemplo de timestamp
+	const date = new Date(unixTimestamp * 1000); // Multiplicar por 1000 para milisegundos
+	console.log(date.toISOString()); // Salida: 2018-08-28T23:33:20.000Z
+	const statusUpdates = [
+		{
+			deudor: { status: states[0][0].status, date: unixDate(states[0][0].dates)  },
+			codeudor: { status: states[1][0].status, date: unixDate(states[1][0].dates)  }
+		}
+	];
+	return statusUpdates[0];
+}
+
+function unixDate(unixTimestamp) {
+    if (!unixTimestamp) return null;
+    const date = new Date(unixTimestamp * 1000);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+}
+
+
+// Simular actualizaciones en tiempo real
+async function simulateStatusUpdates() {
+	var responsfirma = await getElectronicSignature();
+	data = await dataSignature(responsfirma);
+	updateProcess(data);
+	updateHistoryDeptor(data);
+	updateSpanDeptor(data);
+	
+}
+
+function updateProcess(data) {
+	let completedSignatures = 0;
+	
+	if (data.deudor.status === 'signed') completedSignatures++;
+	if (data.codeudor.status === 'signed') completedSignatures++;
+	
+	const progress = (completedSignatures / 2) * 100;
+	
+	// Actualizar barra de progreso
+	document.getElementById('overallProgress').style.width = progress + '%';
+	document.getElementById('progressText').textContent = progress + '%';
+	
+	// Actualizar estado general
+	const overallIcon = document.getElementById('overallStatusIcon');
+	const overallText = document.getElementById('overallStatusText');
+	
+	if (completedSignatures === 2) {
+		overallIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+		overallIcon.style.background = 'var(--success-gradient)';
+		overallText.textContent = 'Proceso Completado';
+	} else if (completedSignatures === 1) {
+		overallIcon.innerHTML = '<i class="fas fa-clock"></i>';
+		overallIcon.style.background = 'var(--warning-gradient)';
+		overallText.textContent = 'Proceso en Curso';
+	}
+}
+
+// Efectos de animación
+function addAnimations() {
+	const cards = document.querySelectorAll('.signature-card, .student-info-card, .overall-status');
+	
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('fade-in');
+			}
+		});
+	});
+
+	cards.forEach(card => {
+		observer.observe(card);
+	});
+}
+
+//////////////////////
+
 
 function openModal(){
 	debtor = getDebtorData();
@@ -120,7 +448,7 @@ function openModal(){
 			$("#authMobile").val(bus_scool[0]['response'][0]["authMobile"]);
 
 			
-			var typeUrl = (typeStydent == 7)?'https://www.comunidadvirtualcaa.co/documentosMatriculaNuevoEstudiante/PDF/generator/documento.php':'https://www.comunidadvirtualcaa.co/documentosMatricula/PDF/generator/documento.php';
+			var typeUrl = (typeStydent == 7)?'/documentosMatriculaLleida/PDF/generator/documento.php':'/documentosMatriculaLleida/PDF/generator/documento.php';
 
 			$("#ModalLargeObs").modal("show");
 			$("#btnModalLarge").off('click').on('click',(e) => {
@@ -155,9 +483,8 @@ function openModal(){
 								allowEscapeKey: false,
 							}).then((result) => {
 								if (result.isConfirmed) {
-									// Recarga la página y ejecuta insertProcessId() al hacer clic en "OK"
 									$("#btnModalLarge").html("Enviado");
-									insertProcessId();
+									//insertProcessId();
 									window.location.reload(true);
 								}
 							});
@@ -172,7 +499,6 @@ function openModal(){
 		});
 	})
 }
-
 
 function sendUpdatedBuss (event){
 	event.preventDefault();
@@ -229,7 +555,6 @@ function sendUpdatedBuss (event){
 }
 
 function openView() {
-
     if ($("#viewTable").hasClass('d-none')) {
         $("#viewTable").removeClass('d-none'); 
         console.log("Mostrando la tabla...");

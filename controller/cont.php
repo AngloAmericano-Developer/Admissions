@@ -2230,6 +2230,38 @@
 	}
 	
 
+	function get_StateSignature($base,$signature_id){
+		try{
+			if(isset($base)){	
+
+				$entry = getStateSignature($base,$signature_id);
+			    return json_encode($entry);
+			}
+			else{
+				return json_encode(array("code"=>400,"error"=>"datos"));
+			}
+		}
+		catch(Exception $e){
+			return json_encode(array("code"=>500,"error"=>$e));
+		}
+	}
+	
+	function get_Signature_Documents($base,$signature_id,$signatory_id){
+		try{
+			if(isset($base)){	
+
+				$entry = getSignatureDocuments($base,$signature_id,$signatory_id);
+			    return json_encode($entry);
+			}
+			else{
+				return json_encode(array("code"=>400,"error"=>"datos"));
+			}
+		}
+		catch(Exception $e){
+			return json_encode(array("code"=>500,"error"=>$e));
+		}
+	}
+
 	function uploadFile($file_){
 		$root = str_replace("\\","/",realpath($_SERVER["DOCUMENT_ROOT"]));
 	 	$file = eliminar_acentos($file_['file']['name']);
@@ -3162,6 +3194,12 @@
 			break;
 			case 'updateStateStudenNewData':
 				echo update_StateStudenNewData($base,$_POST["type"]);
+			break;
+			case 'getStateSignature':
+				echo get_StateSignature($base,$_POST["signature_id"]);
+			break;
+			case 'getSignatureDocuments':
+				echo get_Signature_Documents($base,$_POST["signature_id"],$_POST["signatory_id"]);
 			break;
 					
 			default:

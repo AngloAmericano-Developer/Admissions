@@ -1767,3 +1767,21 @@ function updateStateStudenNewData(type) {
     data: { param: "updateStateStudenNewData", base: "caa", type },
   });
 }
+
+function getStateSignature(signature_id) {
+  return $.ajax({
+    type: "POST",
+    url: "controller/cont.php",
+    dataType: "json",
+    data: { param: "getStateSignature", base: "caa", signature_id },
+  });
+}
+
+function getSignatureDocuments(signature_id, signatory_id) {
+  return $.ajax({
+    type: "POST",
+    url: "controller/cont.php",
+    dataType: "json",
+    data: { param: "getSignatureDocuments", base: "caa", signature_id, signatory_id },
+  });
+}
