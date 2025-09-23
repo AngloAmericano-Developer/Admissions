@@ -86,14 +86,7 @@
                 </div>
                 <div class="info-item signed-debtor"></div>
 
-                <div class="action-buttons">
-                    <button class="btn btn-primary-custom btn-custom viewdocumentbtn">
-                        <i class="fas fa-eye me-2"></i>Ver Documento
-                    </button>
-                    <button class="btn btn-outline-secondary btn-custom">
-                        <i class="fas fa-download me-2"></i>Descargar
-                    </button>
-                </div>
+                <div class="action-buttons buttondebtor" id="buttonDebtor"></div>
             </div>
         </div>
 
@@ -126,23 +119,7 @@
                     <span class="info-value" id="coDebtorPhone"></span>
                 </div>
                 <div class="info-item signed-coDebtor"></div>
-
-                <!-- <div class="action-buttons">
-                    <button class="btn btn-primary-custom btn-custom">
-                        <i class="fas fa-paper-plane me-2"></i>Reenviar
-                    </button>
-                    <button class="btn btn-outline-warning btn-custom">
-                        <i class="fas fa-phone me-2"></i>Contactar
-                    </button>
-                </div> -->
-                <div class="action-buttons">
-                    <button class="btn btn-primary-custom btn-custom">
-                        <i class="fas fa-eye me-2"></i>Ver Documento
-                    </button>
-                    <button class="btn btn-outline-secondary btn-custom">
-                        <i class="fas fa-download me-2"></i>Descargar
-                    </button>
-                </div>
+                <div class="action-buttons buttoncoDebtor" id="buttoncoDebtor"></div>
             </div>
         </div>
     </div>
@@ -150,13 +127,26 @@
     <div class="row mt-4">
         <div class="col-12">
             <div class="text-center">
-                <button class="btn btn-primary-custom btn-custom btn-lg me-3">
+                <button class="btn btn-primary-custom refresh btn-custom btn-lg me-3">
                     <i class="fas fa-sync-alt me-2"></i>Actualizar Estado
                 </button>
-             <!--    <button class="btn btn-outline-primary btn-custom btn-lg">
-                    <i class="fas fa-history me-2"></i>Ver Historial Completo
-                </button> -->
             </div>
         </div>
     </div>
+</div>
+
+
+<!-- Modal visor PDF -->
+<div class="modal fade" id="pdfModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Documento firmado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <iframe id="pdfViewer" width="100%" height="600px" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
 </div>

@@ -4752,8 +4752,8 @@ function getemailentryform($base, $consecutivo) {
 			$data = [
 				"request" => "get_document",
 				"user" => "angloamericano@co",
-				"signature_id" => "17582056990400000",
-				"signatory_id" => "17582056990400000",
+				"signature_id" => "$signature_id",
+				"signatory_id" => "$signatory_id",
 				"file_group" => "signatory_evidence"
 			];
 			
