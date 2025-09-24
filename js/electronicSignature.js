@@ -8,13 +8,13 @@ async function viewElectronicSignature (){
 };
 
 function viewEstadofirma(){
-   	$("#content").load("views/viewElectronicSignature.html?v=5.3",function(){
+   	$("#content").load("views/viewElectronicSignature.html?v=5.4",function(){
 		$("#bodyElectronic").append('<button class="btn btn-primary" id="buttonElectronic" onclick=\"openModal()\" >Firma Electrónica</button>');
 	});
 }
 
 function viewStateSignature(responsfirma){
-	$("#content").load("views/viewStateSignature.html?v=5.3", function(){
+	$("#content").load("views/viewStateSignature.html?v=5.4", function(){
 		viewSignarure(responsfirma);
 	})
 }
@@ -28,7 +28,7 @@ async function viewSignarure(responsfirma){
 		if (!document.getElementById('estilos-dinamicos')) {
 			let link = document.createElement('link');
 			link.rel = 'stylesheet';
-			link.href = 'css/signature.css?v=5.3';
+			link.href = 'css/signature.css?v=5.4';
 			link.id = 'estilos-dinamicos';
 			document.head.appendChild(link);
 		}
@@ -128,7 +128,7 @@ function openModal(){
 	student = getStudentData();
 	bus_scool = serviceBusScool();
 	$.when(debtor,codebtor,dataGuide,student,bus_scool).done((debtor,codebtor,respGuide,respServices,bus_scool) =>{
-		$("#bodyTagLarge").load("views/adminView/modalElectronicSignature.html?v=5.3", function(){
+		$("#bodyTagLarge").load("views/adminView/modalElectronicSignature.html?v=5.4", function(){
 			console.log(bus_scool);	
 			$("#btnModalLarge").html('Comenzar <i class="fa-regular fa-paper-plane"></i>');
 			$(".btnClose").text('Cerrar');

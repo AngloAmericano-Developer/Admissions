@@ -148,7 +148,7 @@ function viewUpdateBasic(){
 
 	$.when(user,infoStudent).done(function(info,dataStudent){
 
-		$("#content").load("views/updateDataBasic.html?v=5.3", function(){
+		$("#content").load("views/updateDataBasic.html?v=5.4", function(){
 
 			/* Cargue de Datos en Inputs */
 
