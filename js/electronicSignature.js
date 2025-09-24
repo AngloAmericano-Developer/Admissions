@@ -8,13 +8,13 @@ async function viewElectronicSignature (){
 };
 
 function viewEstadofirma(){
-   	$("#content").load("views/viewElectronicSignature.html?v=5.2",function(){
+   	$("#content").load("views/viewElectronicSignature.html?v=5.3",function(){
 		$("#bodyElectronic").append('<button class="btn btn-primary" id="buttonElectronic" onclick=\"openModal()\" >Firma Electrónica</button>');
 	});
 }
 
 function viewStateSignature(responsfirma){
-	$("#content").load("views/viewStateSignature.html?v=5.2", function(){
+	$("#content").load("views/viewStateSignature.html?v=5.3", function(){
 		viewSignarure(responsfirma);
 	})
 }
@@ -28,7 +28,7 @@ async function viewSignarure(responsfirma){
 		if (!document.getElementById('estilos-dinamicos')) {
 			let link = document.createElement('link');
 			link.rel = 'stylesheet';
-			link.href = 'css/signature.css?v=5.2';
+			link.href = 'css/signature.css?v=5.3';
 			link.id = 'estilos-dinamicos';
 			document.head.appendChild(link);
 		}
@@ -128,7 +128,7 @@ function openModal(){
 	student = getStudentData();
 	bus_scool = serviceBusScool();
 	$.when(debtor,codebtor,dataGuide,student,bus_scool).done((debtor,codebtor,respGuide,respServices,bus_scool) =>{
-		$("#bodyTagLarge").load("views/adminView/modalElectronicSignature.html?v=5.2", function(){
+		$("#bodyTagLarge").load("views/adminView/modalElectronicSignature.html?v=5.3", function(){
 			console.log(bus_scool);	
 			$("#btnModalLarge").html('Comenzar <i class="fa-regular fa-paper-plane"></i>');
 			$(".btnClose").text('Cerrar');
@@ -218,7 +218,7 @@ function openModal(){
 					success: function(response) {
 						console.log('Documento generado con éxito:', response);
 						Swal.fire({
-							title: "Su proceso de firma electrónica ha comenzado. Le solicitamos consultar su correo, mensaje de texto o WhatsApp para continuar. (Verifique su carpeta de spam en caso de no recibir la información en la bandeja de entrada).",
+							title: "Su proceso de firma electrónica ha comenzado. Le solicitamos consultar su correo, o mensaje de texto para continuar. (Verifique su carpeta de spam en caso de no recibir la información en la bandeja de entrada).",
 							icon: "success",
 							showConfirmButton: false,       // Oculta el botón "OK" inicialmente
 							allowOutsideClick: false,       // Evita que se cierre al hacer clic afuera
@@ -438,7 +438,7 @@ async function updateHistoryDeptor(statusUpdates) {
 					</div>
 					<div class="timeline-content">
 						<small class="fw-bold">Pendiente Deudor</small><br>
-						<small class="text-muted">${statusUpdates.deudor.date || 'Enviado hoy'}</small>
+						<small class="text-muted">${statusUpdates.deudor.date}</small>
 					</div>
 				</div>
 			`);
@@ -465,7 +465,7 @@ async function updateHistoryDeptor(statusUpdates) {
 					</div>
 					<div class="timeline-content">
 						<small class="fw-bold">Pendiente Codeudor</small><br>
-						<small class="text-muted">${statusUpdates.codeudor.date || 'Enviado hoy'}</small>
+						<small class="text-muted">${statusUpdates.codeudor.date}</small>
 					</div>
 				</div>
 			`);
@@ -495,7 +495,7 @@ async function updateSpanDeptor(status) {
             // Fecha o Enviado
             const dateHtml = (data.date && data.status === 'signed')
                 ? `<span class="info-label">Fecha de Firma:</span><span class="info-value">${data.date}</span>`
-                : `<span class="info-label">Enviado:</span><span class="info-value">Enviado hoy</span>`;
+                : `<span class="info-label">Enviado:</span><span class="info-value">${data.date}</span>`;
             $(`.info-item.signed-${role}`).html(dateHtml);
 
             // Botones dinámicos

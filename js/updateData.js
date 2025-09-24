@@ -1586,7 +1586,7 @@ function deleteBrother(id_brother){
 
 function modalBrothers(brothers,brothers_school){
 	$("#titleModalLarge").text('Agregar Hermanos');
-	$("#bodyTagLarge").load("views/adminView/modalBrotherSchool.html?v=5.2", function() {
+	$("#bodyTagLarge").load("views/adminView/modalBrotherSchool.html?v=5.3", function() {
 		if (brothers_school["code"] == 200) {
 			var num = 1;
 			$.each(brothers_school["response"], function(index, value) {
@@ -1672,7 +1672,7 @@ function toggleService(service, elementId) {
 function modalCancelacion(services) {
 	let anio = new Date().getFullYear() + 1;
     $("#titleModalLarge").text('Cancelación de servicios '+ anio);
-    $("#bodyTagLarge").load("views/adminView/modalCancelSe.html?v=5.2", function() {
+    $("#bodyTagLarge").load("views/adminView/modalCancelSe.html?v=5.3", function() {
 
         toggleService(services["Half_Nines"], "#medias3, #medias2, #medias1");
         toggleService(services["Launch"], "#almuerzo3, #almuerzo2, #almuerzo1");
@@ -1984,7 +1984,7 @@ function clearSelection(divId) {
 
 function noTransport() {
 	$("#titleModalLarge").text('Reglamento para estudiantes que no toman el servicio de transporte con el colegio');
-	$("#bodyTagLarge").load("views/adminView/modalNoTransport.html?v=5.2", function() {
+	$("#bodyTagLarge").load("views/adminView/modalNoTransport.html?v=5.3", function() {
 		$("#btnModalLarge").removeAttr('disabled');
 		$(".close").addClass('d-none');
 		$(".btnClose").addClass('d-none');
@@ -2115,7 +2115,7 @@ function noTransport() {
 function yesTransport(routes_desc) {
 	// $("#titleModalLarge").text('Rutas actividades extracurriculares de los miércoles');
 	$("#titleModalLarge").text('Servicio de Transporte.');
-	$("#bodyTagLarge").load("views/adminView/modalYesTransport.html?v=5.2", function() {
+	$("#bodyTagLarge").load("views/adminView/modalYesTransport.html?v=5.3", function() {
 		
 		$(".btnTransport").click(function(e) {
 			var option = $(this).attr('data-val');
@@ -2421,7 +2421,7 @@ function calculateAge(date) {
 }
 
 function viewInitial(type_user){
-	$("#tabinitial").load("views/initial.html?v=5.2", function(){
+	$("#tabinitial").load("views/initial.html?v=5.3", function(){
 		$("#saveData").addClass('d-none');
 		$("#pgPrev").addClass('d-none');
 		if(type_user == 7){
@@ -2435,7 +2435,7 @@ function viewInitial(type_user){
 }
 
 function viewDocuments(requisitos,archivos,grado, student){
-	$("#tabdocuments").load("views/documents.html?v=5.2", function(){
+	$("#tabdocuments").load("views/documents.html?v=5.3", function(){
 		let tipo=1
 		cargar_requisitos(requisitos, tipo, grado, student)
 		for (let i = 0; i < archivos.length; i++) {
@@ -2490,7 +2490,7 @@ function btn_elimE (consec,requisito){
   }
 
 function viewInfoStudent(student,health,brothers,brothers_school,type_user,studentNew){
-	$("#tabstudent").load("views/infoStudent.html?v=5.2", function(){
+	$("#tabstudent").load("views/infoStudent.html?v=5.3", function(){
 		console.log(health);
 		/* Cargue de Datos en Inputs */
 		if(type_user==2){
@@ -3037,7 +3037,7 @@ function styleSelect (id){
 }
 
 function viewInfoParents(civil_status,father,mother,student,fatherNew,motherNew,respemogic){
-	$("#tabparents").load("views/infoParents.html?v=5.2", function(){
+	$("#tabparents").load("views/infoParents.html?v=5.3", function(){
 
 		
 		$("#custody").val(civil_status["Custody"]);
@@ -3167,7 +3167,7 @@ function viewInfoParents(civil_status,father,mother,student,fatherNew,motherNew,
 }
 
 function viewInfoAdditional(tutor,emergency,emergency_add,services,routes_desc,student,grade,brothers,brothers_school){
-	$("#tabadditional").load("views/infoAdditional.html?v=5.2", function(){
+	$("#tabadditional").load("views/infoAdditional.html?v=5.3", function(){
 
 		if((student["Half_Nines"] == 0  || student["Half_Nines"] == null)&& (student["Launch"] == 0 || student["Launch"] == null) && (student["Transport"] == 0 || student["Transport"] == null)){
 			$("#div_cancel").addClass('d-none');
@@ -3438,7 +3438,7 @@ function viewInfoAdditional(tutor,emergency,emergency_add,services,routes_desc,s
 }
 
 function viewInfoFinancial(debtor,codebtor,father,mother,change_retention,type_user,studentNew,respemogic){
-	$("#tabfinancial").load("views/infoFinancial.html?v=5.2", function(){
+	$("#tabfinancial").load("views/infoFinancial.html?v=5.3", function(){
 		// oculta la opción de selector según el tipo
 		/* if (type_user == 7){
 			const selecDeudor = document.getElementById("copy_codebtor");
@@ -3633,7 +3633,7 @@ function viewInfoFinancial(debtor,codebtor,father,mother,change_retention,type_u
 
 function viewSummary(student,grade,studentNew){
 	getSummaryData().done(function(response){
-		$("#tabsummary").load("views/summary.html?v=5.2", function(){
+		$("#tabsummary").load("views/summary.html?v=5.3", function(){
 		$("#pgPrev2").click(function(event) {
 			var tab_ant = 'summary';
 			var position = 'financial';
@@ -4826,19 +4826,19 @@ function viewUpdateData() {
 		console.log(viewPendienteCancel);
 		type_user = respStudent[0]["response"][0]["Type_User"];
 		if (viewPendienteCancel["bloqueo"] == "1") {
-			$("#content").load("views/viewPendiente.html?v=5.2", function(){
+			$("#content").load("views/viewPendiente.html?v=5.3", function(){
 				var tab_ant = $(".tabInfo.active").attr('id');
 				var position = $.inArray(tab_ant, tabsModule);
 			});
 		}
 		else if (stateData[0]["response"][0]["description"] == 0 || stateData[0]["response"][0] == false) {
-			$("#content").load("views/viewUpdateData.html?v=5.2", function(){
+			$("#content").load("views/viewUpdateData.html?v=5.3", function(){
 				//FILLING INFORMATION CARD
 				getApprovalData().done(function(respHabeas){
 					console.log(respHabeas);
 					if (respHabeas["response"][0] == false || respHabeas["response"][0]["description"] == "NO") {
 						$("#titleModalLarge").text('Departamento de Admisiones');
-						$("#bodyTagLarge").load("views/adminView/modalHabeasData.html?v=5.2", function() {
+						$("#bodyTagLarge").load("views/adminView/modalHabeasData.html?v=5.3", function() {
 							$("#btnModalLarge").removeAttr('disabled');
 							$(".close").addClass('d-none');
 							$("#btnModalLarge").text('Acepto');
@@ -4939,7 +4939,7 @@ function viewUpdateData() {
 			});
 		}
 		else if (stateData[0]["response"][0]["description"] == 1) {
-			$("#content").load("views/viewCompleteData.html?v=5.2", function(){
+			$("#content").load("views/viewCompleteData.html?v=5.3", function(){
 				getSummaryData().done(function(response){
 					response["response"]["keys"] = "Resumén de Actualización de Datos";
 					$("#tableSummary").append(createTableInfo("summary",response["response"]));
