@@ -8,13 +8,13 @@ async function viewElectronicSignature (){
 };
 
 function viewEstadofirma(){
-   	$("#content").load("views/viewElectronicSignature.html?v=5.0",function(){
+   	$("#content").load("views/viewElectronicSignature.html?v=5.2",function(){
 		$("#bodyElectronic").append('<button class="btn btn-primary" id="buttonElectronic" onclick=\"openModal()\" >Firma Electrónica</button>');
 	});
 }
 
 function viewStateSignature(responsfirma){
-	$("#content").load("views/viewStateSignature.html?v=5.0", function(){
+	$("#content").load("views/viewStateSignature.html?v=5.2", function(){
 		viewSignarure(responsfirma);
 	})
 }
@@ -28,7 +28,7 @@ async function viewSignarure(responsfirma){
 		if (!document.getElementById('estilos-dinamicos')) {
 			let link = document.createElement('link');
 			link.rel = 'stylesheet';
-			link.href = 'css/signature.css?v=5.0';
+			link.href = 'css/signature.css?v=5.2';
 			link.id = 'estilos-dinamicos';
 			document.head.appendChild(link);
 		}
@@ -128,7 +128,7 @@ function openModal(){
 	student = getStudentData();
 	bus_scool = serviceBusScool();
 	$.when(debtor,codebtor,dataGuide,student,bus_scool).done((debtor,codebtor,respGuide,respServices,bus_scool) =>{
-		$("#bodyTagLarge").load("views/adminView/modalElectronicSignature.html?v=5.0", function(){
+		$("#bodyTagLarge").load("views/adminView/modalElectronicSignature.html?v=5.2", function(){
 			console.log(bus_scool);	
 			$("#btnModalLarge").html('Comenzar <i class="fa-regular fa-paper-plane"></i>');
 			$(".btnClose").text('Cerrar');
@@ -328,6 +328,7 @@ async function viewStudentData() {
 	try {
 		const studentInfo = await userInfo();
 		const student = studentInfo['response'][0];
+		const curso = (student.ID_TU === "7")?student.GRADON:student.CURSO;
 		var templeteStudent = `
                         <h4 class="mb-3"><i class="fas fa-user-graduate me-2"></i> Estudiante</h4>
                         <div class="row">
@@ -338,7 +339,7 @@ async function viewStudentData() {
                                 </div>
                                <div class="info-item">
                                     <span class="info-label">Grado:</span>
-                                    <span class="info-value">${student.CURSO}</span>
+                                    <span class="info-value">${curso}</span>
                                 </div>
                             </div>
 							

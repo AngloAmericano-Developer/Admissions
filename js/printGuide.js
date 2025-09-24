@@ -6,7 +6,7 @@ function viewGuide(){
 	$.when(userData,dataGuide,typeStudent).done(function(respInfo,respGuide,respType){
 		console.log(respInfo['0']['response']['0']['ID']);
 		var estudiant_nue = respInfo['0']['response']['0']['ID'];
-		$("#content").load("views/guide.html?v=5.0", function(){
+		$("#content").load("views/guide.html?v=5.2", function(){
 			if(estudiant_nue == '2023604' ||estudiant_nue == '2023556' ||estudiant_nue == '2023572' ||estudiant_nue == '2023570' ||estudiant_nue == '2023560' ||estudiant_nue == '2023564' ||estudiant_nue == '2023602' ||estudiant_nue == '2023618'){
 				$("#date1").addClass('d-none');
 			}
