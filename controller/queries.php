@@ -4539,7 +4539,7 @@ function getemailentryform($base, $consecutivo) {
 			if(mysql_num_rows($query)>0){
 				while($data = mysql_fetch_assoc($query)){
 					/* $consult = array('idProgrese'=>['idProgrese'],'idprocessId'=>['idprocessId'],'estado'=>['estado']);  */
-					array_push($result,array('id'=> $data["id"], 'tipo_deudor' => $data['tipo_deudor'],'signature_id' => $data['signature_id'],'signatory_id' => $data['signatory_id']));
+					array_push($result,array('id'=> $data["id"], 'fechaIngreso'=> $data["entry_date"], 'tipo_deudor' => $data['tipo_deudor'],'signature_id' => $data['signature_id'],'signatory_id' => $data['signatory_id']));
 				}
 			}
 			return $result;

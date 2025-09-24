@@ -39,8 +39,8 @@ async function viewSignarure(responsfirma){
 		// Actualizar interfaz con los datos obtenidos
 		updateCurrentDate();
 		updateProcess(data);
-		updateHistoryDeptor(data);
-		updateSpanDeptor(data);
+		updateHistoryDeptor(data,responsfirma);
+		updateSpanDeptor(data,responsfirma);
 		//addAnimations();
 		
         // Actualizar fecha cada 20 segundos
@@ -413,7 +413,7 @@ function updateProcess(data) {
 	}
 }
 
-async function updateHistoryDeptor(statusUpdates) {
+async function updateHistoryDeptor(statusUpdates,data=false) {
 	try {
 		const items = [];
 
@@ -438,7 +438,7 @@ async function updateHistoryDeptor(statusUpdates) {
 					</div>
 					<div class="timeline-content">
 						<small class="fw-bold">Pendiente Deudor</small><br>
-						<small class="text-muted">${statusUpdates.deudor.date}</small>
+						<small class="text-muted">${statusUpdates.deudor.date || data[0].fechaIngreso}</small>
 					</div>
 				</div>
 			`);
@@ -465,7 +465,7 @@ async function updateHistoryDeptor(statusUpdates) {
 					</div>
 					<div class="timeline-content">
 						<small class="fw-bold">Pendiente Codeudor</small><br>
-						<small class="text-muted">${statusUpdates.codeudor.date}</small>
+						<small class="text-muted">${statusUpdates.codeudor.date || data[1].fechaIngreso}</small>
 					</div>
 				</div>
 			`);
@@ -482,10 +482,10 @@ async function updateHistoryDeptor(statusUpdates) {
 	}
 }
 
-async function updateSpanDeptor(status) {
+async function updateSpanDeptor(status,date = false) {
     try {
         // Función auxiliar genérica para renderizar
-        function renderPerson(role, data) {
+        function renderPerson(role, data,fechaEnvio) {
             // Estado (Firmado o Pendiente)
             const statusHtml = (data.status === 'signed')
                 ? `<span class="status-badge status-signed"><i class="fas fa-check-circle"></i>Firmado</span>`
@@ -495,7 +495,7 @@ async function updateSpanDeptor(status) {
             // Fecha o Enviado
             const dateHtml = (data.date && data.status === 'signed')
                 ? `<span class="info-label">Fecha de Firma:</span><span class="info-value">${data.date}</span>`
-                : `<span class="info-label">Enviado:</span><span class="info-value">${data.date}</span>`;
+                : `<span class="info-label">Enviado:</span><span class="info-value">${fechaEnvio}</span>`;
             $(`.info-item.signed-${role}`).html(dateHtml);
 
             // Botones dinámicos
@@ -503,12 +503,10 @@ async function updateSpanDeptor(status) {
                 ? `<button class="btn btn-primary-custom btn-custom btn-${role}" data-role="${role}" data-action="view"><i class="fas fa-eye me-2"></i>Ver Documento</button>
                    <button class="btn btn-outline-secondary btn-custom" data-role="${role}" data-action="download"><i class="fas fa-download me-2"></i>Descargar</button>`
                 : ``;
-            $(`.action-buttons.button${role}`).html(buttonHtml);/* 
-			<button class="btn btn-primary-custom btn-custom" data-role="${role}" ><i class="fas fa-paper-plane me-2"></i>Reenviar</button>
-                   <button class="btn btn-outline-warning btn-custom"><i class="fas fa-phone me-2"></i>Contactar</button> */
+            $(`.action-buttons.button${role}`).html(buttonHtml);
         }
-        renderPerson("debtor", status.deudor);
-        renderPerson("coDebtor", status.codeudor);
+        renderPerson("debtor", status.deudor,date[0].fechaIngreso);
+        renderPerson("coDebtor", status.codeudor,date[1].fechaIngreso);
 
 		$(document).off("click", ".btn-custom").on("click", ".btn-custom", function(e) {
 			const role = $(this).data("role");      // debtor o coDebtor
