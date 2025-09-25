@@ -2575,6 +2575,8 @@
 
 	        $query_change = mysql_query($sql_change,$link);
 
+
+
 $procedure = "INSERT INTO mat_retencion(id, tipodeudor, p_apellido, p_nombre, num_documento, orig_documento, t_docu, dpto_docu, dir_casa, tel_casa, id_dpto_resi, id_ciudad_resi, profesion, empresa, cargo, t_servicio, dir_of, tel_of, ext_telo, celular, email, id_copiado,ext_cel) VALUES ('$id',1,'$debtor_last_name','$debtor_names','$debtor_number_doc','$debtor_selectCityExp','$debtor_selectTypeDoc','$debtor_selectDeptoExp','$debtor_selectAddrHome $debtor_nuv # $debtor_pnu - $debtor_snu $debtor_iad','$debtor_phone_home','$debtor_selectDeptoHome','$debtor_selectCityHome','$debtor_occupation','$debtor_company','$debtor_position','$debtor_service_time','$debtor_selectAddr_job $debtor_nuv_job # $debtor_pnu_job - $debtor_snu_job $debtor_iad_job','$debtor_phone_job','$debtor_ext_job','$debtor_mobile','$debtor_email','$copy_debtor','$debtor_indicativo')
 
 					ON DUPLICATE KEY UPDATE p_apellido = '$debtor_last_name',p_nombre = '$debtor_names',num_documento = '$debtor_number_doc',orig_documento = '$debtor_selectCityExp',t_docu = '$debtor_selectTypeDoc',dpto_docu = '$debtor_selectDeptoExp',dir_casa = '$debtor_selectAddrHome $debtor_nuv # $debtor_pnu - $debtor_snu $debtor_iad',tel_casa = '$debtor_phone_home',id_dpto_resi = '$debtor_selectDeptoHome',id_ciudad_resi = '$debtor_selectCityHome',profesion = '$debtor_occupation',empresa = '$debtor_company',cargo = '$debtor_position',t_servicio = '$debtor_service_time',dir_of = '$debtor_selectAddr_job $debtor_nuv_job # $debtor_pnu_job - $debtor_snu_job $debtor_iad_job',tel_of = '$debtor_phone_job',ext_telo = '$debtor_ext_job',celular = '$debtor_mobile',email = '$debtor_email',id_copiado = '$copy_debtor',ext_cel = '$debtor_indicativo'"; 
@@ -2642,8 +2644,11 @@ $procedure = "INSERT INTO mat_retencion(id, tipodeudor, p_apellido, p_nombre, nu
 	        				WHERE id_student = $id";
 
 	        $query_change = mysql_query($sql_change,$link);
+			$procedure = "INSERT INTO mat_retencion(id, tipodeudor, p_apellido, p_nombre, num_documento, orig_documento, t_docu, dpto_docu, dir_casa, tel_casa, id_dpto_resi, id_ciudad_resi, profesion, empresa, cargo, t_servicio, dir_of, tel_of, ext_telo, celular, email, id_copiado,ext_cel) VALUES ('$id',2,'$codebtor_last_name','$codebtor_names','$codebtor_number_doc','$codebtor_selectCityExp','$codebtor_selectTypeDoc','$codebtor_selectDeptoExp','$codebtor_selectAddrHome $codebtor_nuv # $codebtor_pnu - $codebtor_snu $codebtor_iad','$codebtor_phone_home','$codebtor_selectDeptoHome','$codebtor_selectCityHome','$codebtor_occupation','$codebtor_company','$codebtor_position','$codebtor_service_time','$codebtor_selectAddr_job $codebtor_nuv_job # $codebtor_pnu_job - $codebtor_snu_job $codebtor_iad_job','$codebtor_phone_job','$codebtor_ext_job','$codebtor_mobile','$codebtor_email','$copy_codebtor','$codebtor_indicativo')
 
-	        if (mysql_num_rows($query_change)>0 || $profile == 55) {
+					ON DUPLICATE KEY UPDATE p_apellido = '$codebtor_last_name',p_nombre = '$codebtor_names',num_documento = '$codebtor_number_doc',orig_documento = '$codebtor_selectCityExp',t_docu = '$codebtor_selectTypeDoc',dpto_docu = '$codebtor_selectDeptoExp',dir_casa = '$codebtor_selectAddrHome $codebtor_nuv # $codebtor_pnu - $codebtor_snu $codebtor_iad',tel_casa = '$codebtor_phone_home',id_dpto_resi = '$codebtor_selectDeptoHome',id_ciudad_resi = '$codebtor_selectCityHome',profesion = '$codebtor_occupation',empresa = '$codebtor_company',cargo = '$codebtor_position',t_servicio = '$codebtor_service_time',dir_of = '$codebtor_selectAddr_job $codebtor_nuv_job # $codebtor_pnu_job - $codebtor_snu_job $codebtor_iad_job',tel_of = '$codebtor_phone_job',ext_telo = '$codebtor_ext_job',celular = '$codebtor_mobile',email = '$codebtor_email',id_copiado = '$copy_codebtor', ext_cel = '$codebtor_indicativo'";
+
+	       /*  if (mysql_num_rows($query_change)>0 || $profile == 55) {
 
 	        	$procedure = "INSERT INTO mat_retencion(id, tipodeudor, p_apellido, p_nombre, num_documento, orig_documento, t_docu, dpto_docu, dir_casa, tel_casa, id_dpto_resi, id_ciudad_resi, profesion, empresa, cargo, t_servicio, dir_of, tel_of, ext_telo, celular, email, id_copiado,ext_cel) VALUES ('$id',2,'$codebtor_last_name','$codebtor_names','$codebtor_number_doc','$codebtor_selectCityExp','$codebtor_selectTypeDoc','$codebtor_selectDeptoExp','$codebtor_selectAddrHome $codebtor_nuv # $codebtor_pnu - $codebtor_snu $codebtor_iad','$codebtor_phone_home','$codebtor_selectDeptoHome','$codebtor_selectCityHome','$codebtor_occupation','$codebtor_company','$codebtor_position','$codebtor_service_time','$codebtor_selectAddr_job $codebtor_nuv_job # $codebtor_pnu_job - $codebtor_snu_job $codebtor_iad_job','$codebtor_phone_job','$codebtor_ext_job','$codebtor_mobile','$codebtor_email','$copy_codebtor','$codebtor_indicativo')
 
@@ -2658,7 +2663,7 @@ $procedure = "INSERT INTO mat_retencion(id, tipodeudor, p_apellido, p_nombre, nu
 					WHERE id = $id AND tipodeudor = 2"; 
 
 			}
-
+ */
 			$procedure_dir = "INSERT INTO dir_usu(id_usu, id_tpu, via_dius, nuv_dius, pnu_dius, snu_dius, iad_dius) VALUES ('$id',7,'$codebtor_selectAddrHome','$codebtor_nuv','$codebtor_pnu','$codebtor_snu','$codebtor_iad') 
 
 				ON DUPLICATE KEY UPDATE via_dius = '$codebtor_selectAddrHome', nuv_dius = '$codebtor_nuv', pnu_dius = '$codebtor_pnu', snu_dius = '$codebtor_snu', iad_dius = '$codebtor_iad'";

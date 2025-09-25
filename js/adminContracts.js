@@ -107,7 +107,7 @@ function viewAdminContracts(){
 	infoUser = userInfo();
 	list_courses = getCourses();
 	$.when(infoUser,list_courses).done(function(respUser,respCourses){
-		$("#content").load("views/adminContracts.html?v=5.4", function(){
+		$("#content").load("views/adminContracts.html?v=6.1", function(){
 			$("#selectCourse").append(createSelect(respCourses[0]["response"],"selectCourse",1,false));
 			console.log(respUser[0]);
 			$("#btnListed").click(function(e) {

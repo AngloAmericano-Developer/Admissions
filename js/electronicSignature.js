@@ -8,13 +8,13 @@ async function viewElectronicSignature (){
 };
 
 function viewEstadofirma(){
-   	$("#content").load("views/viewElectronicSignature.html?v=5.4",function(){
+   	$("#content").load("views/viewElectronicSignature.html?v=6.1",function(){
 		$("#bodyElectronic").append('<button class="btn btn-primary" id="buttonElectronic" onclick=\"openModal()\" >Firma Electrónica</button>');
 	});
 }
 
 function viewStateSignature(responsfirma){
-	$("#content").load("views/viewStateSignature.html?v=5.4", function(){
+	$("#content").load("views/viewStateSignature.html?v=6.1", function(){
 		viewSignarure(responsfirma);
 	})
 }
@@ -28,7 +28,7 @@ async function viewSignarure(responsfirma){
 		if (!document.getElementById('estilos-dinamicos')) {
 			let link = document.createElement('link');
 			link.rel = 'stylesheet';
-			link.href = 'css/signature.css?v=5.4';
+			link.href = 'css/signature.css?v=6.1';
 			link.id = 'estilos-dinamicos';
 			document.head.appendChild(link);
 		}
@@ -99,8 +99,8 @@ async function simulateStatusUpdates() {
 	var responsfirma = await getElectronicSignature();
 	data = await dataSignature(responsfirma);
 	updateProcess(data);
-	updateHistoryDeptor(data);
-	updateSpanDeptor(data);
+	updateHistoryDeptor(data,responsfirma);
+	updateSpanDeptor(data,responsfirma);
 	
 }
 
@@ -128,7 +128,7 @@ function openModal(){
 	student = getStudentData();
 	bus_scool = serviceBusScool();
 	$.when(debtor,codebtor,dataGuide,student,bus_scool).done((debtor,codebtor,respGuide,respServices,bus_scool) =>{
-		$("#bodyTagLarge").load("views/adminView/modalElectronicSignature.html?v=5.4", function(){
+		$("#bodyTagLarge").load("views/adminView/modalElectronicSignature.html?v=6.1", function(){
 			console.log(bus_scool);	
 			$("#btnModalLarge").html('Comenzar <i class="fa-regular fa-paper-plane"></i>');
 			$(".btnClose").text('Cerrar');
@@ -157,20 +157,18 @@ function openModal(){
 				var buttonSave ="";
 			}else{
 				$("#btnModalLarge").attr('disabled','disabled');
-				var buttonSave = "<p style='color:#0065ff'><b>Por favor, haga clic en el botón Guardar para confirmar los datos solicitados. Una vez guardados, se habilitará el botón Comenzar, ubicado en la parte inferior de la pantalla, para que pueda iniciar el proceso de firma digital.</b></p><button type='submit'  class='btn btn-info btn-sm' onclick = \"sendUpdatedBuss(event)\">Guardar <i class='fa-regular fa-paper-plane'></i></button>"
+				var buttonSave = "<p style='color:#0065ff'><b>Por favor, haga clic en el botón Guardar para confirmar los datos solicitados. Una vez guardados, se habilitará el botón Comenzar, ubicado en la parte inferior de la pantalla, para que pueda iniciar el proceso de firma electrónica.</b></p><button type='submit'  class='btn btn-info btn-sm' onclick = \"sendUpdatedBuss(event)\">Guardar <i class='fa-regular fa-paper-plane'></i></button>"
 			}
 			
-			// let InfoAutPerson = (autPerson == "Si" || autPerson == "")?"":'<b>Nombre: </b>'+bus_scool[0]['response'][0]["authName"]+' <b> Cédula: </b>'+bus_scool[0]['response'][0]["authDoc"]+' <b> Celular: </b>'+bus_scool[0]['response'][0]["authMobile"];
-
 			let inputDatosPerson = "<br><div class='row p-1'><div class='col-md-12 title labelDiv modalDiv' id='viewTable'><span class='label label-default font-weight-bold'>Persona autorizada para recoger al Estudiante</span><div class='row p-1'><div class='col-md-6 inputGroupContainer'><div class='input-group'><input id='authName_2' placeholder='Nombre Completo' class='form-control form-control-sm' value='' type='text'></div></div><div class='col-md-3 inputGroupContainer'><div class='input-group'><input id='authDoc_2' placeholder='N° de Documento' class='form-control form-control-sm' value='' type='text'></div></div><div class='col-md-3 inputGroupContainer'><div class='input-group'><input id='authMobile' placeholder='Celular' class='form-control form-control-sm' value='' type='text'></div></div></div>";
-			let DivBusScool = (serviceTransport == "NO")?"":'<p><b>¿Toma el servicio de Seguimiento Satelital de Ruta (Bus Escool)? <span style="color: red;"><div class="btn-group text-center" data-toggle="buttons"><label class="btn btn-outline-success btn-sm btn_service bus_escool btn-sate-si"  data-val="Si"  onclick ="esconder()"><input class="form-control" type="radio" name="bus_escool" >Si <i class="fa fa-check" aria-hidden="true"></i></label><label class="btn btn-outline-danger btn-sm btn_service bus_escool btn-sate-no"  data-val="No"><input class="form-control" type="radio" name="bus_escool">No <i class="fa fa-times" aria-hidden="true"></i></label></div></span><br/>¿Autoriza a su nuestro(a) hijo(a) para que pueda bajarse solo(a) de la ruta escolar? <span style="color: red;"><br><div class="btn-group" data-toggle="buttons"><label class="btn btn-outline-success btn-sm btnTransport authPersonal btnTransport btn-recoge-si" data-val="Si" onclick=\"openView(true)\"><input class="form-control" type="radio" name="authPersonal">Si <i class="fa fa-check" aria-hidden="true"></i></label><label class="btn btn-outline-danger btn-sm btnTransport authPersonal btn-recoge-no" data-val="No" onclick=\"openView(false)\"><input class="form-control" type="radio" name="authPersonal" active>No <i class="fa fa-times" aria-hidden="true"></i></label></div></span></b><br/>'+inputDatosPerson+'</p></div>';
+			let DivBusScool = (serviceTransport == "NO")?"":'<p><b>¿Toma el servicio de Seguimiento Satelital de Ruta (Bus esCool)? <span style="color: red;"><div class="btn-group text-center" data-toggle="buttons"><label class="btn btn-outline-success btn-sm btn_service bus_escool btn-sate-si"  data-val="Si"  onclick ="esconder()"><input class="form-control" type="radio" name="bus_escool" >Si <i class="fa fa-check" aria-hidden="true"></i></label><label class="btn btn-outline-danger btn-sm btn_service bus_escool btn-sate-no"  data-val="No"><input class="form-control" type="radio" name="bus_escool">No <i class="fa fa-times" aria-hidden="true"></i></label></div></span><br/>¿Autoriza a su hijo(a) para que pueda bajarse solo(a) de la ruta escolar? <span style="color: red;"><br><div class="btn-group" data-toggle="buttons"><label class="btn btn-outline-success btn-sm btnTransport authPersonal btnTransport btn-recoge-si" data-val="Si" onclick=\"openView(true)\"><input class="form-control" type="radio" name="authPersonal">Si <i class="fa fa-check" aria-hidden="true"></i></label><label class="btn btn-outline-danger btn-sm btnTransport authPersonal btn-recoge-no" data-val="No" onclick=\"openView(false)\"><input class="form-control" type="radio" name="authPersonal" active>No <i class="fa fa-times" aria-hidden="true"></i></label></div></span></b><br/>'+inputDatosPerson+'</p></div>';
 			let ext_celDeudor = debtor[0]['response'][0]['ext_cel'];
 			let Type_docDeudor = debtor[0]['response'][0]['Type_doc'];
 			let ext_celCodeudor = codebtor[0]['response'][0]['ext_cel'];
 			let Type_docCodeudor = codebtor[0]['response'][0]['Type_doc'];
 
-			$('#dataDeudor').append('<p class="card-text"><b>NOMBRE: </b>'+LastnameDebtor+' '+nameDebtor+'<br/><b>CÉDULA: </b>'+Type_docDeudor+' '+Num_Doc +'<br/><b>EMAIL: </b>'+emalDebtor +'<br/><b>CELULAR: </b> +('+ext_celDeudor+') '+celDebtor +'</p>');
-			$('#dataCodebtor').append('<p class="card-text"><b>NOMBRE: </b>'+LastnameCodebtor+' '+nameCodebtor+'<br/><b>CÉDULA: </b>'+Type_docCodeudor+' '+Num_DocCodebtor +'<br/><b>EMAIL: </b>'+emalCodebtor +'<br/><b>CELULAR: </b> +('+ext_celCodeudor+') '+celCodebtor +'</p>');
+			$('#dataDeudor').append('<p class="card-text"><b>NOMBRE: </b>'+LastnameDebtor+' '+nameDebtor+'<br/><b>CÉDULA: </b>'+Type_docDeudor+' '+Num_Doc +'<br/><b>EMAIL: </b>'+emalDebtor +'<br/><b>CELULAR: </b> ('+ext_celDeudor+') '+celDebtor +'</p>');
+			$('#dataCodebtor').append('<p class="card-text"><b>NOMBRE: </b>'+LastnameCodebtor+' '+nameCodebtor+'<br/><b>CÉDULA: </b>'+Type_docCodeudor+' '+Num_DocCodebtor +'<br/><b>EMAIL: </b>'+emalCodebtor +'<br/><b>CELULAR: </b> ('+ext_celCodeudor+') '+celCodebtor +'</p>');
 			$('#dataServices').append('<p class="card-text"><b>MEDIAS NUEVES:<span style="color: red;">'+serviceMN+'</span><br/>ALMUERZO: <span style="color: red;">'+serviceLaunch +'</span><br/>TRANSPORTE: <span style="color: red;">'+serviceTransport +'</span></b></p> '+DivBusScool+'<br><div style="margin-top: 20px;text-align:center">'+buttonSave + '</div>');
 			
 			if (BussScool === "N/A" ) {
@@ -204,7 +202,7 @@ function openModal(){
 			$("#authMobile").val(bus_scool[0]['response'][0]["authMobile"]);
 
 			
-			var typeUrl = (typeStydent == 7)?'/documentosMatriculaLleida/PDF/generator/documento.php':'/documentosMatriculaLleida/PDF/generator/documento.php';
+			var typeUrl = '/documentosMatriculaLleida/PDF/generator/documento.php';
 
 			$("#ModalLargeObs").modal("show");
 			$("#btnModalLarge").off('click').on('click',(e) => {
@@ -231,7 +229,7 @@ function openModal(){
 						}).then(() => {
 							// Después de 15 segundos, muestra el segundo SweetAlert con el botón "OK"
 							Swal.fire({
-								title: "Proceso completado",
+								title: "Su proceso de firma ha comenzado.",
 								icon: "success",
 								confirmButtonText: 'OK',
 								confirmButtonColor: '#3085d6',
@@ -241,7 +239,10 @@ function openModal(){
 								if (result.isConfirmed) {
 									$("#btnModalLarge").html("Enviado");
 									//insertProcessId();
-									window.location.reload(true);
+									//window.location.reload(true);
+									const url = new URL(window.location.href);
+									url.searchParams.set("mod", "electronic_signature");
+									window.location.href = url.toString();
 								}
 							});
 						});
@@ -285,7 +286,7 @@ function sendUpdatedBuss (event){
 	$.when(updatedGuardar).done(function(result1) {
 		$("#btnModalLarge").removeAttr('disabled');
 		Swal.fire({
-			title: "Enviado!",
+			title: "Dé clic en el bóton Comenzar",
 			icon: "success",
 			confirmButtonText: 'OK',
 			confirmButtonColor: '#3085d6',
@@ -499,11 +500,11 @@ async function updateSpanDeptor(status,date = false) {
             $(`.info-item.signed-${role}`).html(dateHtml);
 
             // Botones dinámicos
-            const buttonHtml = (data.status === 'signed')
+           /*  const buttonHtml = (data.status === 'signed')
                 ? `<button class="btn btn-primary-custom btn-custom btn-${role}" data-role="${role}" data-action="view"><i class="fas fa-eye me-2"></i>Ver Documento</button>
                    <button class="btn btn-outline-secondary btn-custom" data-role="${role}" data-action="download"><i class="fas fa-download me-2"></i>Descargar</button>`
                 : ``;
-            $(`.action-buttons.button${role}`).html(buttonHtml);
+            $(`.action-buttons.button${role}`).html(buttonHtml); */
         }
         renderPerson("debtor", status.deudor,date[0].fechaIngreso);
         renderPerson("coDebtor", status.codeudor,date[1].fechaIngreso);
