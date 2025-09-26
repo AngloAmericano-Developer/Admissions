@@ -87,7 +87,7 @@ function modulesMain(){
 }
 
 function denyRead(){
-    $("#content").load("views/error.html?v=6.1",function(){
+    $("#content").load("views/error.html?v=6.2",function(){
         $("#content_error").addClass('text-danger');
         $("#content_error").text("UPS!!! no tienes permisos para ver esta sección. No seas curioso...");
     });
@@ -95,7 +95,7 @@ function denyRead(){
 
 function logged_area(){
     $(".body_").children().remove();
-    $(".body_").load("views/body.html?v=6.1",function(){
+    $(".body_").load("views/body.html?v=6.2",function(){
         get_permission(host).done(function(response){
             if(response['response'].length > 0){
                 $.each(response['response'],function(key,value) {
@@ -110,8 +110,8 @@ function logged_area(){
             console.log(response);
         });
         modulesMain();
-        $("#modalView").load("views/modalObs.html?v=6.1");
-        $("#modalLargeView").load("views/modalLarge.html?v=6.1");
+        $("#modalView").load("views/modalObs.html?v=6.2");
+        $("#modalLargeView").load("views/modalLarge.html?v=6.2");
         $(".item").click(function(){
             $(".nav-item").removeClass("active animated flip");
             $(this).parent().addClass("active animated flip");    

@@ -14,7 +14,7 @@ function viewListDocs(){
 	let list_courses;
 	list_courses = getCourses();
 	$.when(list_courses).done(function(respCourses){
-		$("#content").load("views/listedDocuments.html?v=6.1", function(){
+		$("#content").load("views/listedDocuments.html?v=6.2", function(){
 			$("#selectCourse").append(createSelect(respCourses["response"],"selectCourse",1,false));
 			$("#btnListed").click(function(e) {
 				var course = $(".selectCourse").val();

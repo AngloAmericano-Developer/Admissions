@@ -27,7 +27,7 @@ function bs_input_file(itemClass) {
 
 
 function viewChargeDocs(){
-	$("#content").load("views/chargeDocuments.html?v=6.1", function(){
+	$("#content").load("views/chargeDocuments.html?v=6.2", function(){
 		$(function() {
 			bs_input_file(".input-file");
 		});

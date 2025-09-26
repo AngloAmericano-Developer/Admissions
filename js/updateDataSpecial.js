@@ -240,7 +240,7 @@ function viewUpdateSpecial(){
 	user = userInfo();
 	infoStudent = getStudentData();
 	$.when(user,infoStudent).done(function(info,dataStudent){
-		$("#content").load("views/updateDataSpecial.html?v=6.1", function(){
+		$("#content").load("views/updateDataSpecial.html?v=6.2", function(){
 			/* Cargue de Datos en Inputs */
 			var student = dataStudent[0]["response"][0];
 			$("#last_name").val(student["Last_Name"]);
