@@ -4168,8 +4168,8 @@ function getemailentryform($base, $consecutivo) {
 */		
 				// Envío del correo
 				$mail->isHTML(true);
-				$mail->AddEmbeddedImage('../images/bannerCorreo.png', 'bannerPad', 'encabezado1', 'base64', 'image/jpeg');
-				$mail->AddEmbeddedImage('../images/pieCorreo.png', 'footerPad', 'pie pagina1', 'base64', 'image/jpeg');
+				$mail->AddEmbeddedImage('../../documentos/Admissions/images/bannerCorreo.png', 'bannerPad', 'encabezado1', 'base64', 'image/jpeg');
+				$mail->AddEmbeddedImage('../../documentos/Admissions/images/pieCorreo.png', 'footerPad', 'pie pagina1', 'base64', 'image/jpeg');
 			 
 				$mail->Subject = $asunto;
 				$mail->CharSet = 'UTF-8';
@@ -4326,8 +4326,8 @@ function getemailentryform($base, $consecutivo) {
 */		
 					// Envío del correo
 					$mail->isHTML(true);
-					$mail->AddEmbeddedImage('../images/bannerCorreo.png', 'bannerPad', 'encabezado1', 'base64', 'image/jpeg');
-					$mail->AddEmbeddedImage('../images/pieCorreo.png', 'footerPad', 'pie pagina1', 'base64', 'image/jpeg');
+					$mail->AddEmbeddedImage('../../documentos/Admissions/images/bannerCorreo.png', 'bannerPad', 'encabezado1', 'base64', 'image/jpeg');
+					$mail->AddEmbeddedImage('../../documentos/Admissions/images/pieCorreo.png', 'footerPad', 'pie pagina1', 'base64', 'image/jpeg');
 				 
 					$mail->Subject = $asunto;
 					$mail->CharSet = 'UTF-8';
@@ -4509,8 +4509,8 @@ function getemailentryform($base, $consecutivo) {
 	*/		
 					// Envío del correo
 					$mail->isHTML(true);
-					$mail->AddEmbeddedImage('../images/bannerCorreo.png', 'bannerPad', 'encabezado1', 'base64', 'image/jpeg');
-					$mail->AddEmbeddedImage('../images/pieCorreo.png', 'footerPad', 'pie pagina1', 'base64', 'image/jpeg');
+					$mail->AddEmbeddedImage('../../documentos/Admissions/images/bannerCorreo.png', 'bannerPad', 'encabezado1', 'base64', 'image/jpeg');
+					$mail->AddEmbeddedImage('../../documentos/Admissions/images/pieCorreo.png', 'footerPad', 'pie pagina1', 'base64', 'image/jpeg');
 				 
 					$mail->Subject = $asunto;
 					$mail->CharSet = 'UTF-8';
